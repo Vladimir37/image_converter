@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+<article class="form">
+<form action="/two_pics" method="POST" enctype="multipart/form-data">
+<h2>Two pics</h2>
+<input type="file" name="one" required/>
+<input type="file" name="two" required/><br/>
+<input type="submit" value="SUBMIT"/>
+</form>
+</article>
+<article class="form">
+<h2>All pics</h2>
+<form action="/all_pics" method="POST" enctype="multipart/form-data">
+<input type="file" name="one" required/><br/>
+<input type="submit" value="SUBMIT"/>
+</form>
+</article>
+<article class="form">
+<form action="/upload" method="POST" enctype="multipart/form-data">
+<h2>Upload image</h2>
+<input type="file" name="one" required/><br/>
+<input type="submit" value="SUBMIT"/>
+</form>
+</article>
+</body>
+</html>

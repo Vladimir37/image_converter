@@ -1,0 +1,15 @@
+{
+    "name": "application-name",
+    "version": "0.0.1",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "ffi": "2.0.0",
+        "express": "*",
+        "consolidate": "*",
+        "jade": "*",
+        "formidable": "*",
+        "mime-types": "*"
+    }
+}
