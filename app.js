@@ -1,6 +1,5 @@
 var http = require('http');
 var express = require('express');
-var engines = require('consolidate');
 var actions = require('./actions');
 
 var app = express();

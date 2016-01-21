@@ -6,6 +6,7 @@
     },
     "dependencies": {
         "ffi": "2.0.0",
+        "ref": "*",
         "express": "*",
         "consolidate": "*",
         "jade": "*",
