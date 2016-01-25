@@ -8,12 +8,11 @@ var mime = require('mime-types');
 //var RTLD_GLOBAL = ffi.DynamicLibrary.FLAGS.RTLD_GLOBAL;
 //var mode = RTLD_NOW | RTLD_GLOBAL;
 
-//function random
-//var lib = ffi.DynamicLibrary('/usr/local/lib/libopencv_core.so.3.0');
-//var lib = ffi.DynamicLibrary('./libcerno.so');
 var my_rand = ffi.Library('./libcerno', {
     'my_rand': ['double', []]
 });
+
+console.log(my_rand.my_rand());
 
 function index(req, res, next) {
     console.log(my_rand());
