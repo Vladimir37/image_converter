@@ -7,10 +7,12 @@
     "dependencies": {
         "ffi": "2.0.0",
         "ref": "*",
+        "ref-struct": "*",
         "express": "*",
         "consolidate": "*",
         "jade": "*",
         "formidable": "*",
-        "mime-types": "*"
+        "mime-types": "*",
+        "image-size": "*"
     }
 }
