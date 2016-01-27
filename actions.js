@@ -4,13 +4,17 @@ var ref = require('ref');
 var formidable = require('formidable');
 var mime = require('mime-types');
 var Struct = require('ref-struct');
+var ArrayType = require('ref-array');
 var is = require('image-size');
 var pixel = require('pixel-getter');
+
+var int = ref.types.int;
+var IntArray = ArrayType(int);
 
 var ffiImage = Struct({
     'rows': 'int',
     'cols': 'int',
-    'data': 'int'
+    'data': IntArray
 });
 
 var ffi_image = ref.refType(ffiImage);
@@ -119,20 +123,36 @@ function im_a2() {
 Promise.all([im_r1(), im_r2(), im_d1(), im_d2()]).then(function(){
     return Promise.all([im_a1(), im_a2()]);
 }).then(function(imgs_arr) {
+    //input
+    var img1_arr = new IntArray(all.resolution1.height*all.resolution1.width*3);
+    var img2_arr = new IntArray(all.resolution2.height*all.resolution2.width*3);
+    //output
+    var res1_arr = new IntArray(all.resolution1.height*all.resolution1.width*4*4*3);
+    var res2_arr =  new IntArray(all.resolution2.height*all.resolution1.width*4*4*3);
+    //input
     var img_s_1 = new ffiImage({
         'rows': all.resolution1.height,
         'cols': all.resolution1.width,
-        'data': imgs_arr[0]
+        'data': img1_arr
     });
     var img_s_2 = new ffiImage({
         'rows': all.resolution2.height,
         'cols': all.resolution2.width,
-        'data': imgs_arr[1]
+        'data': img2_arr
     });
-    var res1 = new ffiImage();
-    var res2 = new ffiImage();
-    //var result = libcerno.compare_images(5, img_s_1.ref(), img_s_2.ref(), res1.ref(), res2.ref());
-    console.log(img_s_1);
+    //output
+    var res1 = new ffiImage({
+        'rows': all.resolution1.height*4,
+        'cols': all.resolution1.width*4,
+        'data': res1_arr
+    });
+    var res2 = new ffiImage({
+        'rows': all.resolution2.height*4,
+        'cols': all.resolution2.width*4,
+        'data': res2_arr
+    });
+    var result = libcerno.compare_images(5, img_s_1.ref(), img_s_2.ref(), res1.ref(), res2.ref());
+    console.log(result);
 });
 //test ------------------------------------------------------------------
 
