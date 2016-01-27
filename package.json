@@ -8,11 +8,13 @@
         "ffi": "2.0.0",
         "ref": "*",
         "ref-struct": "*",
+        "ref-array": "*",
         "express": "*",
         "consolidate": "*",
         "jade": "*",
         "formidable": "*",
         "mime-types": "*",
-        "image-size": "*"
+        "image-size": "*",
+        "pixel-getter": "*"
     }
 }
