@@ -10,6 +10,7 @@ var pixel = require('pixel-getter');
 
 var int = ref.types.int;
 var IntArray = ArrayType(int);
+var intPtr = ref.refType('int');
 
 var ffiImage = Struct({
     'rows': 'int',
@@ -17,11 +18,11 @@ var ffiImage = Struct({
     'data': IntArray
 });
 
-var ffi_image = ref.refType(ffiImage);
+//var ffi_image = ref.refType(ffiImage);
 
 var libcerno = ffi.Library('./libcerno', {
     'my_rand': ['double', []],
-    'compare_images': ['double', ['int', ffi_image, ffi_image, ffi_image, ffi_image]]
+    'compare_images': ['double', ['int', ffiImage, ffiImage, ffiImage, ffiImage]]
 });
 
 //test ------------------------------------------------------------------
@@ -36,7 +37,7 @@ var all = {
 //promises -------------------------
 function im_r1() {
     return new Promise(function (resolve, reject) {
-        fs.readFile('images/1453770075207.jpeg', function (err, result) {
+        fs.readFile('images/josiah_203_l_88510.jpg', function (err, result) {
             if (err) {
                 reject(err);
             }
@@ -49,7 +50,7 @@ function im_r1() {
 }
 function im_r2() {
     return new Promise(function (resolve, reject) {
-        fs.readFile('images/1453775300708.jpeg', function (err, result) {
+        fs.readFile('images/josiah_203_l_88510.jpg', function (err, result) {
             if (err) {
                 reject(err);
             }
@@ -62,7 +63,7 @@ function im_r2() {
 }
 function im_d1() {
     return new Promise(function(resolve, reject) {
-        is('images/1453770075207.jpeg', function(err, result) {
+        is('images/josiah_203_l_88510.jpg', function(err, result) {
             if(err) {
                 reject(err);
             }
@@ -75,7 +76,7 @@ function im_d1() {
 }
 function im_d2() {
     return new Promise(function(resolve, reject) {
-        is('images/1453775300708.jpeg', function(err, result) {
+        is('images/josiah_203_l_88510.jpg', function(err, result) {
             if(err) {
                 reject(err);
             }
@@ -123,12 +124,20 @@ function im_a2() {
 Promise.all([im_r1(), im_r2(), im_d1(), im_d2()]).then(function(){
     return Promise.all([im_a1(), im_a2()]);
 }).then(function(imgs_arr) {
+    console.log("!!");
+    console.log(all.resolution1.height);
+    console.log(all.resolution1.width);
+    console.log(all.resolution2.height);
+    console.log(all.resolution2.width);
+
     //input
     var img1_arr = new IntArray(all.resolution1.height*all.resolution1.width*3);
     var img2_arr = new IntArray(all.resolution2.height*all.resolution2.width*3);
     //output
     var res1_arr = new IntArray(all.resolution1.height*all.resolution1.width*4*4*3);
+    console.log(res1_arr.length);
     var res2_arr =  new IntArray(all.resolution2.height*all.resolution1.width*4*4*3);
+    console.log(res2_arr.length);
     //input
     var img_s_1 = new ffiImage({
         'rows': all.resolution1.height,
@@ -151,7 +160,7 @@ Promise.all([im_r1(), im_r2(), im_d1(), im_d2()]).then(function(){
         'cols': all.resolution2.width*4,
         'data': res2_arr
     });
-    var result = libcerno.compare_images(5, img_s_1.ref(), img_s_2.ref(), res1.ref(), res2.ref());
+    var result = libcerno.compare_images(5, img_s_1, img_s_2, res1, res2);
     console.log(result);
 });
 //test ------------------------------------------------------------------
