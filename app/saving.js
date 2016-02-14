@@ -13,7 +13,7 @@ function saving(type, req, res) {
             form.parse(req, function(err, fields, files) {
                 if(err) {
                     console.log(err);
-                    res.end('Error!');
+                    reject('Error!');
                 }
                 var img = files.one;
                 var ext = mime.extension(img.type);
@@ -26,10 +26,10 @@ function saving(type, req, res) {
                     }
                     fs.rename(img.path, 'images/saved/' + new Date().getTime() + '.' + ext, function (err) {
                         if (err) {
-                            res.end('Error!');
+                            reject('Error!');
                         }
                         else {
-                            res.end('Success!');
+                            resolve('Success!');
                         }
                     });
                 });
@@ -44,7 +44,7 @@ function saving(type, req, res) {
                 form.parse(req, function(err, fields, files) {
                     if(err) {
                         console.log(err);
-                        res.end('Error!');
+                        reject('Error!');
                     }
                     var img1 = files.one;
                     var img2 = files.two;
@@ -73,7 +73,7 @@ function saving(type, req, res) {
                     });
                     var imgs_done = 0;
                     loading.on('error', function() {
-                        res.end('Error!');
+                        reject('Error!');
                     });
                     loading.on('done', function() {
                         ++imgs_done;
@@ -88,30 +88,23 @@ function saving(type, req, res) {
             form.parse(req, function(err, fields, files) {
                 if(err) {
                     console.log(err);
-                    res.end('Error!');
+                    reject('Error!');
                 }
                 var img = files.one;
                 var ext = mime.extension(img.type);
-                is(img.path, function(err, data) {
-                    if(err) {
-                        console.log(err);
+                var date_name = new Date().getTime();
+                fs.rename(img.path, 'images/all_pics/' + date_name + '.' + ext, function (err) {
+                    if (err) {
+                        reject('Error!');
                     }
                     else {
-                        console.log(data);
+                        resolve(date_name + '.' + ext);
                     }
-                    fs.rename(img.path, 'images/all/' + new Date().getTime() + '.' + ext, function (err) {
-                        if (err) {
-                            res.end('Error!');
-                        }
-                        else {
-                            res.end('Success!');
-                        }
-                    });
                 });
             });
         }
         else {
-            res.end('Incorrect command.');
+            reject('Incorrect command.');
         }
     });
 }

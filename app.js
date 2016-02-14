@@ -1,6 +1,6 @@
 var http = require('http');
 var express = require('express');
-var actions = require('./actions');
+var actions = require('./app/actions');
 
 var app = express();
 
@@ -12,5 +12,7 @@ app.get('/', actions.index);
 app.post('/two_pics', actions.two_pics);
 app.post('/all_pics', actions.all_pics);
 app.post('/upload', actions.upload);
+
+app.use('/result', express.static(__dirname + '/images/results'));
 
 http.createServer(app).listen(3000);
