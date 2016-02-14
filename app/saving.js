@@ -78,7 +78,7 @@ function saving(type, req, res) {
                     loading.on('done', function() {
                         ++imgs_done;
                         if(imgs_done == 2) {
-                            resolve([file1, file2]);
+                            resolve(['two_pics/' + file1, 'two_pics/' + file2]);
                         }
                     })
                 });

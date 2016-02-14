@@ -10,7 +10,7 @@ var pixel = require('pixel-getter');
 
 var int = ref.types.int;
 var IntArray = ArrayType(int);
-var intPtr = ref.refType('int');
+//var intPtr = ref.refType('int');
 
 var ffiImage = Struct({
     'rows': 'int',
