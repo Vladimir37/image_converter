@@ -22,21 +22,19 @@ var libcerno = ffi.Library('./libcerno', {
     'compare_images': ['double', ['int', ffiImage, ffiImage, ffiImage, ffiImage]]
 });
 
-//test ------------------------------------------------------------------
-var all = {
-    img1: null,
-    img2: null,
-    img1_arr: null,
-    img2_arr: null,
-    resolution1: null,
-    resolution2: null
-};
-
 function compare() {
-//promises -------------------------
+    var all = {
+        img1: null,
+        img2: null,
+        img1_arr: null,
+        img2_arr: null,
+        resolution1: null,
+        resolution2: null
+    };
+    //promises -------------------------
     function im_r1() {
         return new Promise(function (resolve, reject) {
-            fs.readFile('images/josiah_203_l_88510.jpg', function (err, result) {
+            fs.readFile('images/saved/josiah_203_l_88510.jpg', function (err, result) {
                 if (err) {
                     reject(err);
                 }
@@ -50,7 +48,7 @@ function compare() {
 
     function im_r2() {
         return new Promise(function (resolve, reject) {
-            fs.readFile('images/josiah_203_l_88510.jpg', function (err, result) {
+            fs.readFile('images/saved/josiah_203_l_88510.jpg', function (err, result) {
                 if (err) {
                     reject(err);
                 }
@@ -64,7 +62,7 @@ function compare() {
 
     function im_d1() {
         return new Promise(function (resolve, reject) {
-            is('images/josiah_203_l_88510.jpg', function (err, result) {
+            is('images/saved/josiah_203_l_88510.jpg', function (err, result) {
                 if (err) {
                     reject(err);
                 }
@@ -78,7 +76,7 @@ function compare() {
 
     function im_d2() {
         return new Promise(function (resolve, reject) {
-            is('images/josiah_203_l_88510.jpg', function (err, result) {
+            is('images/saved/josiah_203_l_88510.jpg', function (err, result) {
                 if (err) {
                     reject(err);
                 }
@@ -134,9 +132,9 @@ function compare() {
         var img2_arr = new IntArray(all.resolution2.height * all.resolution2.width * 3);
         //output
         var res1_arr = new IntArray(all.resolution1.height * all.resolution1.width * 4 * 4 * 3);
-        console.log(res1_arr.length);
+        // console.log(res1_arr.length);
         var res2_arr = new IntArray(all.resolution2.height * all.resolution1.width * 4 * 4 * 3);
-        console.log(res2_arr.length);
+        // console.log(res2_arr.length);
         //input
         var img_s_1 = new ffiImage({
             'rows': all.resolution1.height,

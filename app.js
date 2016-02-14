@@ -4,8 +4,8 @@ var actions = require('./actions');
 
 var app = express();
 
+app.set('view engine', 'jade');
 app.set('views', __dirname + '/pages');
-app.engine('.html', require('jade').renderFile);
 
 app.get('/', actions.index);
 

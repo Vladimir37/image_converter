@@ -1,0 +1,27 @@
+doctype
+html(lang="en")
+   head
+       meta(charset="UTF-8")
+       title Index
+   body
+       section.content
+           article.form
+               form(action="/two_pics" method="POST" enctype="multipart/form-data")
+                   h2 Two pics
+                   input(type="file" name="one" required)
+                   br
+                   input(type="file" name="two" required)
+                   br
+                   input(type="submit" value="SUBMIT")
+           article.form
+               form(action="/all_pics" method="POST" enctype="multipart/form-data")
+                   h2 All pics
+                   input(type="file" name="one" required)
+                   br
+                   input(type="submit" value="SUBMIT")
+           article.form
+               form(action="/upload" method="POST" enctype="multipart/form-data")
+                   h2 Upload image
+                   input(type="file" name="one" required)
+                   br
+                   input(type="submit" value="SUBMIT")
