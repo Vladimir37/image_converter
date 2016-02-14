@@ -2,21 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb1abfdc-3d86-4113-a7c5-4855c7d0c921" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/index.jade" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/saving.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/1453768288117.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/1453769415952.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/1453770075207.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/1453775300708.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/img.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/josiah_203_l_88510.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/josiah_263_l_89621.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/sd_4_l_90241.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/sd_8_l_90255.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/saved/1453768288117.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/saved/1453769415952.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/saved/1453770075207.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/saved/1453775300708.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/saved/1455406370697.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/saved/img.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/two_pics/1455407222477/one.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/two_pics/1455407222477/two.jpeg" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/actions.js" afterPath="$PROJECT_DIR$/actions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/index.jade" afterPath="$PROJECT_DIR$/pages/index.jade" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/processing.js" afterPath="$PROJECT_DIR$/processing.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/saving.js" afterPath="$PROJECT_DIR$/saving.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="image_converter.iws" />
@@ -48,31 +45,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.24048096">
-              <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="actions.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="actions.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/actions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="saving.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/saving.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="87" column="37" selection-start-line="87" selection-start-column="37" selection-end-line="87" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.59850377">
+              <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -82,7 +69,17 @@
         <entry file="file://$PROJECT_DIR$/processing.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="134" column="22" selection-start-line="134" selection-start-column="22" selection-end-line="134" selection-end-column="22" />
+              <caret line="164" column="7" selection-start-line="164" selection-start-column="7" selection-end-line="164" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="saving.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/saving.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="80" column="49" selection-start-line="80" selection-start-column="49" selection-end-line="80" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -91,8 +88,8 @@
       <file leaf-file-name="index.jade" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/index.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.551723">
-              <caret line="24" column="57" selection-start-line="24" selection-start-column="57" selection-end-line="24" selection-end-column="57" />
+            <state vertical-scroll-proportion="-5.5172415">
+              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -119,11 +116,11 @@
         <option value="$PROJECT_DIR$/pages/index.html" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/saving.js" />
-        <option value="$PROJECT_DIR$/processing.js" />
-        <option value="$PROJECT_DIR$/pages/index.jade" />
-        <option value="$PROJECT_DIR$/actions.js" />
         <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/saving.js" />
+        <option value="$PROJECT_DIR$/pages/index.jade" />
+        <option value="$PROJECT_DIR$/processing.js" />
+        <option value="$PROJECT_DIR$/actions.js" />
       </list>
     </option>
   </component>
@@ -263,9 +260,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="31" width="1440" height="817" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38920453" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -524,18 +521,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/saving.js">
+    <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="87" column="37" selection-start-line="87" selection-start-column="37" selection-end-line="87" selection-end-column="37" />
+          <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/index.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.551723">
-          <caret line="24" column="57" selection-start-line="24" selection-start-column="57" selection-end-line="24" selection-end-column="57" />
+        <state vertical-scroll-proportion="-5.5172415">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/saving.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="80" column="49" selection-start-line="80" selection-start-column="49" selection-end-line="80" selection-end-column="49" />
           <folding />
         </state>
       </provider>
@@ -543,23 +548,15 @@
     <entry file="file://$PROJECT_DIR$/processing.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="134" column="22" selection-start-line="134" selection-start-column="22" selection-end-line="134" selection-end-column="22" />
+          <caret line="164" column="7" selection-start-line="164" selection-start-column="7" selection-end-line="164" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/actions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24048096">
-          <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.59850377">
+          <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
           <folding />
         </state>
       </provider>

@@ -22,7 +22,7 @@ var libcerno = ffi.Library('./libcerno', {
     'compare_images': ['double', ['int', ffiImage, ffiImage, ffiImage, ffiImage]]
 });
 
-function compare() {
+function compare(first, second, res) {
     var all = {
         img1: null,
         img2: null,
@@ -122,7 +122,7 @@ function compare() {
         });
     }
 
-//promises -------------------------
+    //promises -------------------------
 
     Promise.all([im_r1(), im_r2(), im_d1(), im_d2()]).then(function () {
         return Promise.all([im_a1(), im_a2()]);
@@ -157,8 +157,11 @@ function compare() {
             'cols': all.resolution2.width * 4,
             'data': res2_arr
         });
+        console.log(res1_arr.ref());
         var result = libcerno.compare_images(5, img_s_1, img_s_2, res1, res2);
-        console.log(result);
+        console.log(res1.data.ref());
+        //console.log(res1.rows);
+        res.end('END');
     });
 }
 

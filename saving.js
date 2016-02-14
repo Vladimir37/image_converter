@@ -51,7 +51,9 @@ function saving(type, req, res) {
                     var ext1 = mime.extension(img1.type);
                     var ext2 = mime.extension(img2.type);
                     var loading = new EventEmitter();
-                    fs.rename(img1.path, 'images/two_pics/' + date_name + '/one.' + ext1, function (err) {
+                    var file1 = date_name + '/one.' + ext1;
+                    var file2 = date_name + '/two.' + ext2;
+                    fs.rename(img1.path, 'images/two_pics/' + file1, function (err) {
                         if (err) {
                             console.log(err);
                             loading.emit('error');
@@ -60,7 +62,7 @@ function saving(type, req, res) {
                             loading.emit('done');
                         }
                     });
-                    fs.rename(img2.path, 'images/two_pics/' + date_name + '/two.' + ext2, function (err) {
+                    fs.rename(img2.path, 'images/two_pics/' + file2, function (err) {
                         if (err) {
                             console.log(err);
                             loading.emit('error');
@@ -76,7 +78,7 @@ function saving(type, req, res) {
                     loading.on('done', function() {
                         ++imgs_done;
                         if(imgs_done == 2) {
-                            res.end('Success!');
+                            resolve([file1, file2]);
                         }
                     })
                 });
