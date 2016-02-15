@@ -7,6 +7,7 @@ var Struct = require('ref-struct');
 var ArrayType = require('ref-array');
 var is = require('image-size');
 var pixel = require('pixel-getter');
+var PixelStack = require('pixel-stack');
 
 var int = ref.types.int;
 var IntArray = ArrayType(int);
@@ -130,8 +131,8 @@ function compare(first, second) {
             return Promise.all([im_a1(), im_a2()]);
         }).then(function (imgs_arr) {
             //input
-            var img1_arr = new IntArray(all.resolution1.height * all.resolution1.width * 3);
-            var img2_arr = new IntArray(all.resolution2.height * all.resolution2.width * 3);
+            var img1_arr = new IntArray(imgs_arr[0]);
+            var img2_arr = new IntArray(imgs_arr[1]);
             //output
             var res1_arr = new IntArray(all.resolution1.height * all.resolution1.width * 4 * 4 * 3);
             // console.log(res1_arr.length);
@@ -161,42 +162,9 @@ function compare(first, second) {
             });
             var result_number = libcerno.compare_images(5, img_s_1, img_s_2, res1, res2);
 
-            //saving result
-            var saving = new EventEmitter();
-            var name = new Date().getTime();
-            var done_files = 0;
-            var result = {
-                number: result_number,
-                first: name + '_first',
-                second: name + '_second'
-            };
-            fs.writeFile('images/results/' + name + '_first', res1.data, function(err) {
-                if(err) {
-                    console.log(err);
-                    saving.emit('error');
-                }
-                else {
-                    saving.emit('done');
-                }
-            });
-            fs.writeFile('images/results/' + name + '_second', res2.data, function(err) {
-                if(err) {
-                    console.log(err);
-                    saving.emit('error');
-                }
-                else {
-                    saving.emit('done');
-                }
-            });
-            saving.on('error', function() {
-                reject('Error!')
-            });
-            saving.on('done', function() {
-                ++done_files;
-                if(done_files == 2) {
-                    resolve(result);
-                }
-            });
+            //resolve(result);
+            console.log(result_number);
+            resolve(img_s_1);
         });
     });
 }

@@ -3,8 +3,14 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         title Result
+        link(rel="stylesheet" href="/src/main.css")
+        script(src="http://code.jquery.com/jquery-2.2.0.min.js")
+        script(src="/src/scripts.js")
     body
         section.content
-            h1 Num: #{number}
-            img(src="/result/" + first alt="img1")
-            img(src="/result/" + second alt="img2")
+            canvas(width=cols height=rows data-elem=data)#first
+            //h1 Num: #{number}
+            //canvas(width="300" height="400")#first
+            //canvas(width="300" height="400")#second
+            //img(src="/result/" + first alt="img1")
+            //img(src="/result/" + second alt="img2")

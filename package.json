@@ -1,20 +1,22 @@
 {
-    "name": "application-name",
-    "version": "0.0.1",
-    "scripts": {
-        "start": "node app.js"
-    },
-    "dependencies": {
-        "ffi": "2.0.0",
-        "ref": "*",
-        "ref-struct": "*",
-        "ref-array": "*",
-        "express": "*",
-        "consolidate": "*",
-        "jade": "*",
-        "formidable": "*",
-        "mime-types": "*",
-        "image-size": "*",
-        "pixel-getter": "*"
-    }
+  "name": "application-name",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "base64image": "^0.1.1",
+    "consolidate": "*",
+    "express": "*",
+    "ffi": "2.0.0",
+    "formidable": "*",
+    "image-size": "*",
+    "jade": "*",
+    "mime-types": "*",
+    "pixel-getter": "*",
+    "pixel-stack": "*",
+    "ref": "*",
+    "ref-array": "*",
+    "ref-struct": "*"
+  }
 }

@@ -13,6 +13,6 @@ app.post('/two_pics', actions.two_pics);
 app.post('/all_pics', actions.all_pics);
 app.post('/upload', actions.upload);
 
-app.use('/result', express.static(__dirname + '/images/results'));
+app.use('/src', express.static(__dirname + '/source'));
 
 http.createServer(app).listen(3000);

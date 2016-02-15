@@ -1,5 +1,7 @@
 var compare = require('./processing');
 var saving = require('./saving');
+var PixelStack = require('pixel-stack');
+var fs = require('fs');
 
 // router
 function index(req, res, next) {
@@ -10,7 +12,8 @@ function two_pics(req, res, next) {
     saving('two', req, res).then(function(names) {
         return compare(names[0], names[1]);
     }).then(function(result) {
-        res.render('result.jade', result);
+        //res.render('result.jade', result);
+        res.render('result.jade', {res: result});
     }).catch(function(err) {
         res.end(err);
     });
