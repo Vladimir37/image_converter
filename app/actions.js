@@ -10,10 +10,11 @@ function index(req, res, next) {
 
 function two_pics(req, res, next) {
     saving('two', req, res).then(function(names) {
+        console.log(names);
         return compare(names[0], names[1]);
     }).then(function(result) {
         //res.render('result.jade', result);
-        res.render('result.jade', {res: result});
+        res.render('result.jade', result);
     }).catch(function(err) {
         res.end(err);
     });
@@ -23,28 +24,28 @@ function all_pics(req, res, next) {
     var file_name;
     saving('all', req, res).then(function(name) {
         file_name = name;
-        fs.readdir('images/saved', function(err, data) {
-            if(err) {
+        fs.readdir('images/saved', function (err, data) {
+            if (err) {
                 res.end(err);
             }
             else {
-                return data;
+                return Promise.resolve(data);
             }
-        }).then(function(images) {
-            var all_images = [];
-            images.forEach(function(item) {
-                all_images.push(compare('all_pics/' + file_name, 'saved/' + item));
-            });
-            return Promise.all(all_images);
-        }).then(function(result) {
-            result.sort(function(a, b) {
-                return a.number - b.number;
-            });
-            res.render('result.jade', result[0]);
-        }).catch(function(err) {
-            console.log(err);
-            res.end('Error!');
         })
+    }).then(function(images) {
+        var all_images = [];
+        images.forEach(function(item) {
+            all_images.push(compare('all_pics/' + file_name, 'saved/' + item));
+        });
+        return Promise.resolve(all_images);
+    }).then(function(result) {
+        result.sort(function(a, b) {
+            return a.number - b.number;
+        });
+        res.render('result.jade', result[0]);
+    }).catch(function(err) {
+        console.log(err);
+        res.end('Error!');
     });
 };
 

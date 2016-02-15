@@ -8,9 +8,6 @@ html(lang="en")
         script(src="/src/scripts.js")
     body
         section.content
-            canvas(width=cols height=rows data-elem=data)#first
-            //h1 Num: #{number}
-            //canvas(width="300" height="400")#first
-            //canvas(width="300" height="400")#second
-            //img(src="/result/" + first alt="img1")
-            //img(src="/result/" + second alt="img2")
+            h1 Num: #{number}
+            canvas(width=first.cols height=first.rows data-elem=first.data)#first
+            canvas(width=second.cols height=second.rows data-elem=second.data)#second

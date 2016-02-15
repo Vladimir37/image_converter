@@ -161,10 +161,42 @@ function compare(first, second) {
                 'data': res2_arr
             });
             var result_number = libcerno.compare_images(5, img_s_1, img_s_2, res1, res2);
-
-            //resolve(result);
-            console.log(result_number);
-            resolve(img_s_1);
+            console.log('START');
+            var image_result_arr_first = [];
+            for (var i = 0; i < res1.rows; ++i) {
+                for (var j = 0; j < res1.cols; ++j) {
+                    var pixel_first = [];
+                    pixel_first.push(res1.data[3*res1.cols*i + 3*j + 0]);
+                    pixel_first.push(res1.data[3*res1.cols*i + 3*j + 1]);
+                    pixel_first.push(res1.data[3*res1.cols*i + 3*j + 2]);
+                    image_result_arr_first.push(pixel_first);
+                }
+            }
+            var image_result_arr_second = [];
+            for (var k = 0; k < res1.rows; ++k) {
+                for (var l = 0; l < res1.cols; ++l) {
+                    var pixel_second = [];
+                    pixel_second.push(res2.data[3*res2.cols*k + 3*l + 0]);
+                    pixel_second.push(res2.data[3*res2.cols*k + 3*l + 1]);
+                    pixel_second.push(res2.data[3*res2.cols*k + 3*l + 2]);
+                    image_result_arr_second.push(pixel_second);
+                }
+            }
+            var first = {
+                cols: res1.cols,
+                rows: res1.rows,
+                data: image_result_arr_first
+            };
+            var second = {
+                cols: res2.cols,
+                rows: res2.rows,
+                data: image_result_arr_second
+            };
+            resolve({
+                first: first,
+                second: second,
+                number: result_number
+            });
         });
     });
 }
