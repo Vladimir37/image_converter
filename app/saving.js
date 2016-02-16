@@ -2,7 +2,7 @@ var EventEmitter = require('events');
 var fs = require('fs');
 var formidable = require('formidable');
 var mime = require('mime-types');
-var is = require('image-size');
+var resizing = require('./resizing');
 
 function saving(type, req, res) {
     return new Promise(function(resolve, reject) {
@@ -17,21 +17,18 @@ function saving(type, req, res) {
                 }
                 var img = files.one;
                 var ext = mime.extension(img.type);
-                is(img.path, function(err, data) {
-                    if(err) {
-                        console.log(err);
+                var file_name = new Date().getTime() + '.' + ext;
+                fs.rename(img.path, 'images/saved/' + file_name, function (err) {
+                    if (err) {
+                        reject('Error!');
                     }
                     else {
-                        console.log(data);
-                    }
-                    fs.rename(img.path, 'images/saved/' + new Date().getTime() + '.' + ext, function (err) {
-                        if (err) {
-                            reject('Error!');
-                        }
-                        else {
+                        resizing('saved/' + file_name).then(function() {
                             resolve('Success!');
-                        }
-                    });
+                        }, function(err) {
+                            reject('Error!');
+                        });
+                    }
                 });
             });
         }
@@ -51,6 +48,24 @@ function saving(type, req, res) {
                     var ext1 = mime.extension(img1.type);
                     var ext2 = mime.extension(img2.type);
                     var loading = new EventEmitter();
+                    var imgs_done = 0;
+                    loading.on('error', function() {
+                        reject('Error!');
+                    });
+                    loading.on('done', function() {
+                        ++imgs_done;
+                        if(imgs_done == 2) {
+                            Promise.all([
+                                resizing('two_pics/' + file1),
+                                resizing('two_pics/' + file2)
+                            ]).then(function() {
+                                resolve(['two_pics/' + file1, 'two_pics/' + file2]);
+                            }, function(err) {
+                                console.log(err);
+                                reject('Error!');
+                            });
+                        }
+                    });
                     var file1 = date_name + '/one.' + ext1;
                     var file2 = date_name + '/two.' + ext2;
                     fs.rename(img1.path, 'images/two_pics/' + file1, function (err) {
@@ -71,16 +86,6 @@ function saving(type, req, res) {
                             loading.emit('done');
                         }
                     });
-                    var imgs_done = 0;
-                    loading.on('error', function() {
-                        reject('Error!');
-                    });
-                    loading.on('done', function() {
-                        ++imgs_done;
-                        if(imgs_done == 2) {
-                            resolve(['two_pics/' + file1, 'two_pics/' + file2]);
-                        }
-                    })
                 });
             });
         }
@@ -98,7 +103,11 @@ function saving(type, req, res) {
                         reject('Error!');
                     }
                     else {
-                        resolve(date_name + '.' + ext);
+                        resizing('all_pics/' + date_name + '.' + ext).then(function() {
+                            resolve(date_name + '.' + ext);
+                        }, function(err) {
+                            reject('Error!');
+                        });
                     }
                 });
             });
