@@ -24,24 +24,31 @@ function all_pics(req, res, next) {
     var file_name;
     saving('all', req, res).then(function(name) {
         file_name = name;
-        fs.readdir('images/saved', function (err, data) {
-            if (err) {
-                res.end(err);
-            }
-            else {
-                return Promise.resolve(data);
-            }
-        })
+        return new Promise(function(resolve, reject) {
+            fs.readdir('images/saved', function (err, data) {
+                if (err) {
+                    return reject(err);
+                }
+                else {
+                    return resolve(data);
+                }
+            });
+        });
     }).then(function(images) {
+        console.log(images);
         var all_images = [];
         images.forEach(function(item) {
             all_images.push(compare('all_pics/' + file_name, 'saved/' + item));
         });
-        return Promise.resolve(all_images);
+        return Promise.all(all_images);
     }).then(function(result) {
         result.sort(function(a, b) {
-            return a.number - b.number;
+            return b.number - a.number;
         });
+        result.forEach(function(item) {
+            console.log(item.number);
+        });
+        console.log(result);
         res.render('result.jade', result[0]);
     }).catch(function(err) {
         console.log(err);
