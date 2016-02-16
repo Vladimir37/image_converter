@@ -1,6 +1,7 @@
 var http = require('http');
 var express = require('express');
 var actions = require('./app/actions');
+var config = require('./config');
 
 var app = express();
 
@@ -15,4 +16,4 @@ app.post('/upload', actions.upload);
 
 app.use('/src', express.static(__dirname + '/source'));
 
-http.createServer(app).listen(3000);
+http.createServer(app).listen(config.port);
