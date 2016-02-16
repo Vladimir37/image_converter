@@ -161,7 +161,6 @@ function compare(first, second) {
                 'data': res2_arr
             });
             var result_number = libcerno.compare_images(5, img_s_1, img_s_2, res1, res2);
-            console.log('START');
             var image_result_arr_first = [];
             for (var i = 0; i < res1.rows; ++i) {
                 for (var j = 0; j < res1.cols; ++j) {

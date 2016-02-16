@@ -35,7 +35,6 @@ function all_pics(req, res, next) {
             });
         });
     }).then(function(images) {
-        console.log(images);
         var all_images = [];
         images.forEach(function(item) {
             all_images.push(compare('all_pics/' + file_name, 'saved/' + item));
@@ -48,7 +47,6 @@ function all_pics(req, res, next) {
         result.forEach(function(item) {
             console.log(item.number);
         });
-        console.log(result);
         res.render('result.jade', result[0]);
     }).catch(function(err) {
         console.log(err);
