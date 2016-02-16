@@ -43,6 +43,7 @@ function saving(type, req, res) {
                         console.log(err);
                         reject('Error!');
                     }
+                    var CliqueCount = fields.count;
                     var img1 = files.one;
                     var img2 = files.two;
                     var ext1 = mime.extension(img1.type);
@@ -59,7 +60,7 @@ function saving(type, req, res) {
                                 resizing('two_pics/' + file1),
                                 resizing('two_pics/' + file2)
                             ]).then(function() {
-                                resolve(['two_pics/' + file1, 'two_pics/' + file2]);
+                                resolve(['two_pics/' + file1, 'two_pics/' + file2, CliqueCount]);
                             }, function(err) {
                                 console.log(err);
                                 reject('Error!');
@@ -95,6 +96,7 @@ function saving(type, req, res) {
                     console.log(err);
                     reject('Error!');
                 }
+                var CliqueCount = fields.count;
                 var img = files.one;
                 var ext = mime.extension(img.type);
                 var date_name = new Date().getTime();
@@ -104,7 +106,7 @@ function saving(type, req, res) {
                     }
                     else {
                         resizing('all_pics/' + date_name + '.' + ext).then(function() {
-                            resolve(date_name + '.' + ext);
+                            resolve([date_name + '.' + ext, CliqueCount]);
                         }, function(err) {
                             reject('Error!');
                         });

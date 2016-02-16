@@ -10,10 +10,8 @@ function index(req, res, next) {
 
 function two_pics(req, res, next) {
     saving('two', req, res).then(function(names) {
-        console.log(names);
-        return compare(names[0], names[1]);
+        return compare(names[0], names[1], names[2]);
     }).then(function(result) {
-        //res.render('result.jade', result);
         res.render('result.jade', result);
     }).catch(function(err) {
         res.end(err);
@@ -22,8 +20,10 @@ function two_pics(req, res, next) {
 
 function all_pics(req, res, next) {
     var file_name;
+    var CliqueCount;
     saving('all', req, res).then(function(name) {
-        file_name = name;
+        file_name = name[0];
+        CliqueCount = name[1];
         return new Promise(function(resolve, reject) {
             fs.readdir('images/saved', function (err, data) {
                 if (err) {
@@ -37,7 +37,7 @@ function all_pics(req, res, next) {
     }).then(function(images) {
         var all_images = [];
         images.forEach(function(item) {
-            all_images.push(compare('all_pics/' + file_name, 'saved/' + item));
+            all_images.push(compare('all_pics/' + file_name, 'saved/' + item, CliqueCount));
         });
         return Promise.all(all_images);
     }).then(function(result) {

@@ -1,5 +1,4 @@
 var fs = require('fs');
-var EventEmitter = require('events');
 
 var ffi = require('ffi');
 var ref = require('ref');
@@ -7,11 +6,9 @@ var Struct = require('ref-struct');
 var ArrayType = require('ref-array');
 var is = require('image-size');
 var pixel = require('pixel-getter');
-var PixelStack = require('pixel-stack');
 
 var int = ref.types.int;
 var IntArray = ArrayType(int);
-//var intPtr = ref.refType('int');
 
 var ffiImage = Struct({
     'rows': 'int',
@@ -24,7 +21,7 @@ var libcerno = ffi.Library('app/libcerno', {
     'compare_images': ['double', ['int', ffiImage, ffiImage, ffiImage, ffiImage]]
 });
 
-function compare(first, second) {
+function compare(first, second, count) {
     return new Promise(function(resolve, reject) {
         var all = {
             img1: null,
@@ -160,7 +157,7 @@ function compare(first, second) {
                 'cols': all.resolution2.width * 4,
                 'data': res2_arr
             });
-            var result_number = libcerno.compare_images(5, img_s_1, img_s_2, res1, res2);
+            var result_number = libcerno.compare_images(count, img_s_1, img_s_2, res1, res2);
             var image_result_arr_first = [];
             for (var i = 0; i < res1.rows; ++i) {
                 for (var j = 0; j < res1.cols; ++j) {

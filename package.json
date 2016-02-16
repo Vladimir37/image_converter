@@ -10,6 +10,7 @@
     "express": "*",
     "ffi": "2.0.0",
     "formidable": "*",
+    "imagemagick": "*",
     "image-size": "*",
     "jade": "*",
     "mime-types": "*",
