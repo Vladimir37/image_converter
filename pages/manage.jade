@@ -1,0 +1,25 @@
+doctype
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        title Index
+    body
+        section.content
+            ul
+                - each user, i in users
+                    - var status = user.status == 0 ? 'watcher' : 'administrator'
+                    li #{user.name} (#{status})
+            h2 User creating
+            form(method='POST' action='/manage')
+                input(type='text' name='name' placeholder='Name' required)
+                br
+                input(type='text' name='pass' placeholder='Password' required)
+                br
+                label
+                    input(type='radio' name='status' value='0' checked)
+                    | Watcher
+                label
+                    input(type='radio' name='status' value='1')
+                    | Administrator
+                br
+                input(type='submit' value='Create user')

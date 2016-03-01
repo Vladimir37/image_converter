@@ -23,4 +23,10 @@ var users = sequelize.define('users', {
     status: Sequelize.INTEGER
 });
 
+users.sync().then(function() {
+    //success
+}, function(err) {
+    console.log('Database error: ' + err);
+});
+
 module.exports = users;

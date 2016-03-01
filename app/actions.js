@@ -3,17 +3,45 @@ var fs = require('fs');
 var compare = require('./processing');
 var saving = require('./saving');
 var auth = require('./db/auth');
+var users = require('./db/models');
+var crypt = require('./crypt');
 
 // router
 function index(req, res, next) {
-    if(auth.check_bool(req)) {
+    auth.check_bool(req).then(function() {
         res.render('index.jade');
-    }
-    else {
+    }, function() {
         res.render('login.jade');
-    }
+    });
 };
 
+function manage_front(req, res, next) {
+    users.findAll().then(function(users) {
+        res.render('manage.jade', {users: users});
+    }, function(err) {
+        console.log(err);
+        res.end('Server error');
+    });
+}
+
+function manage_back(req, res, next) {
+    var name = req.body.name;
+    var raw_pass = req.body.pass;
+    var status = req.body.status;
+    var pass = crypt.encrupt(raw_pass);
+    users.create({
+        name,
+        pass,
+        status
+    }).then(function() {
+        res.end('Success');
+    }, function(err) {
+        console.log(err);
+        res.end('Server error');
+    });
+}
+
+// image handling
 function two_pics(req, res, next) {
     saving('two', req, res).then(function(names) {
         return compare(names[0], names[1], names[2]);
@@ -73,3 +101,5 @@ exports.index = index;
 exports.two_pics = two_pics;
 exports.all_pics = all_pics;
 exports.upload = upload;
+exports.manage_front = manage_front;
+exports.manage_back = manage_back;

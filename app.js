@@ -20,6 +20,11 @@ app.set('views', __dirname + '/pages');
 
 app.get('/', actions.index);
 
+app.get('/manage', auth.check, auth.check_status, actions.manage_front);
+
+app.post('/manage', auth.check, auth.check_status, actions.manage_back);
+app.post('/login', auth.auth);
+
 app.post('/two_pics', auth.check, actions.two_pics);
 app.post('/all_pics', auth.check, actions.all_pics);
 app.post('/upload', auth.check, actions.upload);
