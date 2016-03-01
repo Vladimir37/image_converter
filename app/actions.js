@@ -1,11 +1,17 @@
+var fs = require('fs');
+
 var compare = require('./processing');
 var saving = require('./saving');
-var PixelStack = require('pixel-stack');
-var fs = require('fs');
+var auth = require('./db/auth');
 
 // router
 function index(req, res, next) {
-    res.render('index.jade');
+    if(auth.check_bool(req)) {
+        res.render('index.jade');
+    }
+    else {
+        res.render('login.jade');
+    }
 };
 
 function two_pics(req, res, next) {

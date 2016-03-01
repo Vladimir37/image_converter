@@ -6,18 +6,23 @@
   },
   "dependencies": {
     "base64image": "^0.1.1",
+    "body-parser": "^1.15.0",
     "consolidate": "*",
+    "cookie-parser": "^1.4.1",
+    "easy-encryption": "^0.1.1",
     "express": "*",
     "ffi": "2.0.0",
     "formidable": "*",
-    "imagemagick": "*",
     "image-size": "*",
+    "imagemagick": "*",
     "jade": "*",
     "mime-types": "*",
     "pixel-getter": "*",
     "pixel-stack": "*",
     "ref": "*",
     "ref-array": "*",
-    "ref-struct": "*"
+    "ref-struct": "*",
+    "sequelize": "^3.19.3",
+    "sqlite3": "^3.1.1"
   }
 }
