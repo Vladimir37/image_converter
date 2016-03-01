@@ -5,12 +5,21 @@ html(lang="en")
         title Index
     body
         section.content
+            a(href='/exit')
+                input(type='button' value='Logout')
+            a(href='/')
+                input(type='button' value='Index')
             ul
                 - each user, i in users
                     - var status = user.status == 0 ? 'watcher' : 'administrator'
                     li #{user.name} (#{status})
+                        form(method='POST')
+                            input(type='hidden' name='type' value='2')
+                            input(type='hidden' name='id' value=user.id)
+                            input(type='submit' value='Delete')
             h2 User creating
             form(method='POST' action='/manage')
+                input(type='hidden' name='type' value='1')
                 input(type='text' name='name' placeholder='Name' required)
                 br
                 input(type='text' name='pass' placeholder='Password' required)

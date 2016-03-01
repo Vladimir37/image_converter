@@ -97,7 +97,13 @@ function check_status(req, res, next) {
     }
 }
 
+function exit(req, res, next) {
+    res.clearCookie('ic_login');
+    res.redirect('/');
+}
+
 exports.auth = authentication;
 exports.check = check;
 exports.check_bool = check_bool;
 exports.check_status = check_status;
+exports.exit = exit;

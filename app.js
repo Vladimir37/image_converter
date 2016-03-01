@@ -21,6 +21,7 @@ app.set('views', __dirname + '/pages');
 app.get('/', actions.index);
 
 app.get('/manage', auth.check, auth.check_status, actions.manage_front);
+app.get('/exit', auth.exit);
 
 app.post('/manage', auth.check, auth.check_status, actions.manage_back);
 app.post('/login', auth.auth);

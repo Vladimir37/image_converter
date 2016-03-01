@@ -25,20 +25,41 @@ function manage_front(req, res, next) {
 }
 
 function manage_back(req, res, next) {
-    var name = req.body.name;
-    var raw_pass = req.body.pass;
-    var status = req.body.status;
-    var pass = crypt.encrupt(raw_pass);
-    users.create({
-        name,
-        pass,
-        status
-    }).then(function() {
-        res.end('Success');
-    }, function(err) {
-        console.log(err);
-        res.end('Server error');
-    });
+    var type = req.body.type;
+    //creating
+    if(type == 1) {
+        var name = req.body.name;
+        var raw_pass = req.body.pass;
+        var status = req.body.status;
+        var pass = crypt.encrupt(raw_pass);
+        users.create({
+            name,
+            pass,
+            status
+        }).then(function () {
+            res.end('Success');
+        }, function (err) {
+            console.log(err);
+            res.end('Server error');
+        });
+    }
+    //deleting
+    else if(type == 2) {
+        var id = req.body.id;
+        users.destroy({
+            where: {
+                id
+            }
+        }).then(function () {
+            res.end('Success');
+        }, function (err) {
+            console.log(err);
+            res.end('Server error');
+        });
+    }
+    else {
+        res.end('Incorrect command');
+    }
 }
 
 // image handling
