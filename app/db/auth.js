@@ -41,6 +41,7 @@ function check(req, res, next) {
             }
         }).then(function(user) {
             if(user) {
+                res.locals.user_status = user.status;
                 next();
             }
             else {
@@ -63,7 +64,7 @@ function check_bool(req) {
                 }
             }).then(function (user) {
                 if(Boolean(user)) {
-                    resolve();
+                    resolve(user.status);
                 }
                 else {
                     reject();

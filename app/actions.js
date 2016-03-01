@@ -8,7 +8,8 @@ var crypt = require('./crypt');
 
 // router
 function index(req, res, next) {
-    auth.check_bool(req).then(function() {
+    auth.check_bool(req).then(function(status) {
+        res.locals.user_status = status;
         res.render('index.jade');
     }, function() {
         res.render('login.jade');
