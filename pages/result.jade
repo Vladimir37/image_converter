@@ -1,13 +1,10 @@
-doctype
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        title Result
-        link(rel="stylesheet" href="/src/main.css")
-        script(src="http://code.jquery.com/jquery-2.2.0.min.js")
-        script(src="/src/scripts.js")
-    body
-        section.content
-            h1 Num: #{number}
-            canvas(width=first.cols height=first.rows data-elem=first.data)#first
-            canvas(width=second.cols height=second.rows data-elem=second.data)#second
+extends _layout_
+
+block scripts
+    script(src="/src/result_render.js")
+
+block content
+    section.content
+        h1 Num: #{number}
+        canvas(width=first.cols height=first.rows data-elem=first.data)#first
+        canvas(width=second.cols height=second.rows data-elem=second.data)#second

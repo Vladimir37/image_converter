@@ -1,35 +1,41 @@
-doctype
-html(lang="en")
-   head
-       meta(charset="UTF-8")
-       title Index
-   body
-       section.content
-           a(href='/exit')
-               input(type='button' value='Logout')
-           - if(user_status)
-               a(href='/manage')
-                   input(type='button' value='Manage')
-           article.form
-               form(action="/two_pics" method="POST" enctype="multipart/form-data")
-                   h2 Two pics
-                   input(type="text" name="count" placeholder="CliqueCount" pattern="^[0-9]+$" required)
-                   br
-                   input(type="file" name="one" required)
-                   input(type="file" name="two" required)
-                   br
-                   input(type="submit" value="SUBMIT")
-           article.form
-               form(action="/all_pics" method="POST" enctype="multipart/form-data")
-                   h2 All pics
-                   input(type="text" name="count" placeholder="CliqueCount" pattern="^[0-9]+$" required)
-                   br
-                   input(type="file" name="one" required)
-                   br
-                   input(type="submit" value="SUBMIT")
-           article.form
-               form(action="/upload" method="POST" enctype="multipart/form-data")
-                   h2 Upload image
-                   input(type="file" name="one" required)
-                   br
-                   input(type="submit" value="SUBMIT")
+extends _layout_
+
+block scripts
+    script(src='/src/index.js')
+
+block content
+   a(href='/exit')
+       input(type='button' value='Logout')
+   - if(user_status)
+       a(href='/manage')
+           input(type='button' value='Manage')
+   article.form
+       form(action="/two_pics" method="POST" enctype="multipart/form-data")
+           h2 Two pics
+           select(name='CliqueCount')
+               option(value='100') Simple scan (100)
+               option(value='300') Middle scan (300)
+               option(value='1000') Full scan (1000)
+           br
+           input(type="file" name="one" required)
+           input(type="file" name="two" required)
+           br
+           input(type="submit" value="SUBMIT")
+   article.form
+       form(action="/all_pics" method="POST" enctype="multipart/form-data")
+           h2 All pics
+           select(name='CliqueCount')
+               option(value='100') Simple scan (100)
+               option(value='300') Middle scan (300)
+               option(value='1000') Full scan (1000)
+           br
+           input(type="file" name="one" required)
+           br
+           input(type="submit" value="SUBMIT")
+   article.form
+       form(action="/upload" method="POST" enctype="multipart/form-data")
+           h2 Upload image
+           article.save_files
+               input(type="file" class="files_upload_field" name="file_1" data-used="0" required)
+           br
+           input(type="submit" value="SUBMIT")

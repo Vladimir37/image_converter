@@ -2,3 +2,6 @@ canvas {
     border: 1px solid black;
     margin: 5px;
 }
+.files_upload_field {
+    display: block;
+}

@@ -1,8 +1,8 @@
 var Sequelize = require('sequelize');
 
-var sequelize = new Sequelize('database', 'username', 'password', {
-    dialect: 'sqlite',
-    storage: 'app/db/database.sqlite',
+var sequelize = new Sequelize('comparison', 'root', 'node_db', {
+    dialect: 'mysql',
+    host: 'localhost',
     logging: false
 });
 
@@ -21,6 +21,19 @@ var users = sequelize.define('users', {
     name: Sequelize.TEXT,
     pass: Sequelize.TEXT,
     status: Sequelize.INTEGER
+});
+
+var images = sequelize.define('images', {
+    id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+    },
+    width: Sequelize.INTEGER,
+    height: Sequelize.INTEGER,
+    user: Sequelize.INTEGER,
+    file: Sequelize.TEXT,
+    ext: Sequelize.TEXT
 });
 
 users.sync().then(function() {
