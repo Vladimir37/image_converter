@@ -41,6 +41,8 @@ function check(req, res, next) {
             }
         }).then(function(user) {
             if(user) {
+                res.user_id = user.id;
+                res.user_status = user.status;
                 res.locals.user_status = user.status;
                 next();
             }

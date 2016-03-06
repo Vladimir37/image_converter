@@ -2,7 +2,9 @@ var EventEmitter = require('events');
 var fs = require('fs');
 var formidable = require('formidable');
 var mime = require('mime-types');
+
 var resizing = require('./resizing');
+var convert = require('./converting');
 
 function saving(type, req, res) {
     return new Promise(function(resolve, reject) {
@@ -15,21 +17,21 @@ function saving(type, req, res) {
                     console.log(err);
                     reject('Error!');
                 }
-                var img = files.one;
-                var ext = mime.extension(img.type);
-                var file_name = new Date().getTime() + '.' + ext;
-                fs.rename(img.path, 'images/saved/' + file_name, function (err) {
-                    if (err) {
-                        reject('Error!');
-                    }
-                    else {
-                        resizing('saved/' + file_name).then(function() {
-                            resolve('Success!');
-                        }, function(err) {
-                            reject('Error!');
-                        });
+                // image filer
+                var images_arr = [];
+                files.forEach(function(file) {
+                    if(file.type.slice(0, 5) == 'image') {
+                        images_arr.push(file);
                     }
                 });
+                var convert_images = [];
+                var datetime = new Date().getTime().toString();
+                var num = 0;
+                images_arr.forEach(function(image) {
+                    convert_images.push(convert(image.path, image.type, datetime + num));
+                    num++;
+                });
+
             });
         }
         else if(type == 'two') {

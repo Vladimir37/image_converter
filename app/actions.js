@@ -5,6 +5,7 @@ var saving = require('./saving');
 var auth = require('./db/auth');
 var users = require('./db/models');
 var crypt = require('./crypt');
+var convert = require('./converting');
 
 // router
 function index(req, res, next) {
