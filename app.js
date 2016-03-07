@@ -21,6 +21,7 @@ app.set('views', __dirname + '/pages');
 
 app.get('/', render.index);
 
+app.get('/gallery', auth.check, render.gallery);
 app.get('/image/:num', auth.check, render.image);
 
 app.get('/manage', auth.check, auth.check_status, render.manage_front);

@@ -34,9 +34,23 @@ function image_render(req, res, next) {
             var image_buffer = new Buffer(img.file, 'base64');
             res.end(image_buffer);
         }
+    }).catch(function(err) {
+        console.log(err);
+        res.end('500 Server error');
+    })
+}
+
+function gallery(req, res, next) {
+    models.images.findAll({
+        where: {
+            user: res.user_id
+        }
+    }).then(function(images) {
+        res.render('gallery.jade', {images})
     })
 }
 
 exports.index = index;
 exports.manage_front = manage_front;
 exports.image = image_render;
+exports.gallery = gallery;

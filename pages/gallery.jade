@@ -3,5 +3,7 @@ extends _layout_
 block content
     h1 Gallery
     - each image, i in images
-        figure
-            //
+        figure.gallery_figure
+            a(href='/image/' + image.id)
+                img(src='/image/' + image.id alt='gallery_figure')
+            p #{image.createdAt.toString()}
