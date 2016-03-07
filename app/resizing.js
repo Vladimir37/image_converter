@@ -1,5 +1,7 @@
 var is = require('image-size');
 var im = require('imagemagick');
+var fs = require('fs');
+
 var config = require('../config');
 
 function resizing(data) {
@@ -9,17 +11,18 @@ function resizing(data) {
             width: config.width,
             height: config.height
         };
-        im.crop(resize_options, function (err, stdout) {
+        im.crop(resize_options, function (err, stdout, stderr) {
             if (err) {
                 console.log(err);
                 reject(err);
             }
             else {
-                resolve({
+                var image_data = {
                     width: config.width,
                     height: config.height,
-                    file: stdout
-                });
+                    file: new Buffer(stdout, 'binary')
+                };
+                resolve(image_data);
             }
         });
     });

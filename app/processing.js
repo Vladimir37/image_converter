@@ -24,70 +24,20 @@ var libcerno = ffi.Library('app/libcerno', {
 function compare(first, second, count) {
     return new Promise(function(resolve, reject) {
         var all = {
-            img1: null,
-            img2: null,
+            img1: first.file,
+            img2: second.file,
             img1_arr: null,
             img2_arr: null,
-            resolution1: null,
-            resolution2: null
+            resolution1: {
+                width: first.width,
+                height: first.height
+            },
+            resolution2: {
+                width: second.width,
+                height: second.height
+            }
         };
         //promises -------------------------
-        function im_r1() {
-            return new Promise(function (resolve, reject) {
-                fs.readFile('images/' + first, function (err, result) {
-                    if (err) {
-                        reject(err);
-                    }
-                    else {
-                        all.img1 = result;
-                        resolve();
-                    }
-                });
-            });
-        }
-
-        function im_r2() {
-            return new Promise(function (resolve, reject) {
-                fs.readFile('images/' + second, function (err, result) {
-                    if (err) {
-                        reject(err);
-                    }
-                    else {
-                        all.img2 = result;
-                        resolve();
-                    }
-                });
-            });
-        }
-
-        function im_d1() {
-            return new Promise(function (resolve, reject) {
-                is('images/' + first, function (err, result) {
-                    if (err) {
-                        reject(err);
-                    }
-                    else {
-                        all.resolution1 = result;
-                        resolve();
-                    }
-                });
-            });
-        }
-
-        function im_d2() {
-            return new Promise(function (resolve, reject) {
-                is('images/' + second, function (err, result) {
-                    if (err) {
-                        reject(err);
-                    }
-                    else {
-                        all.resolution2 = result;
-                        resolve();
-                    }
-                });
-            });
-        }
-
         function im_a1() {
             return new Promise(function (resolve, reject) {
                 pixel.get(all.img1, function (err, pixels) {
@@ -124,9 +74,7 @@ function compare(first, second, count) {
 
         //promises -------------------------
 
-        Promise.all([im_r1(), im_r2(), im_d1(), im_d2()]).then(function () {
-            return Promise.all([im_a1(), im_a2()]);
-        }).then(function (imgs_arr) {
+        Promise.all([im_a1(), im_a2()]).then(function (imgs_arr) {
             //input
             var img1_arr = new IntArray(imgs_arr[0]);
             var img2_arr = new IntArray(imgs_arr[1]);
@@ -158,6 +106,8 @@ function compare(first, second, count) {
                 'data': res2_arr
             });
             var result_number = libcerno.compare_images(count, img_s_1, img_s_2, res1, res2);
+            console.log(all.resolution1);
+            console.log(all.resolution2);
             var image_result_arr_first = [];
             for (var i = 0; i < res1.rows; ++i) {
                 for (var j = 0; j < res1.cols; ++j) {
