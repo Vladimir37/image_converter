@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var actions = require('./app/actions');
 var config = require('./config');
 var auth = require('./app/db/auth');
+var render = require('./app/render');
 
 var app = express();
 
@@ -18,9 +19,11 @@ app.use(bodyParser.urlencoded({
 app.set('view engine', 'jade');
 app.set('views', __dirname + '/pages');
 
-app.get('/', actions.index);
+app.get('/', render.index);
 
-app.get('/manage', auth.check, auth.check_status, actions.manage_front);
+app.get('/image/:num', auth.check, render.image);
+
+app.get('/manage', auth.check, auth.check_status, render.manage_front);
 app.get('/exit', auth.exit);
 
 app.post('/manage', auth.check, auth.check_status, actions.manage_back);

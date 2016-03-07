@@ -1,6 +1,6 @@
 var process = require('process');
 
-var users = require('./app/db/models');
+var users = require('./app/db/models').users;
 var crypt = require('./app/crypt');
 
 var name = process.argv[2];

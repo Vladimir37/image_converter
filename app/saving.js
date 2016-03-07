@@ -5,6 +5,7 @@ var mime = require('mime-types');
 
 var resizing = require('./resizing');
 var convert = require('./converting');
+var models = require('./db/models');
 
 function saving(type, req, res) {
     return new Promise(function(resolve, reject) {
@@ -19,11 +20,11 @@ function saving(type, req, res) {
                 }
                 // image filer
                 var images_arr = [];
-                files.forEach(function(file) {
-                    if(file.type.slice(0, 5) == 'image') {
-                        images_arr.push(file);
+                for(var file in files) {
+                    if(files[file].type.slice(0, 5) == 'image') {
+                        images_arr.push(files[file]);
                     }
-                });
+                };
                 var convert_images = [];
                 var datetime = new Date().getTime().toString();
                 var num = 0;
@@ -31,7 +32,24 @@ function saving(type, req, res) {
                     convert_images.push(convert(image.path, image.type, datetime + num));
                     num++;
                 });
-
+                var user = res.user_id;
+                Promise.all(convert_images).then(function(images) {
+                    var for_saving = [];
+                    images.forEach(function(img) {
+                        for_saving.push(models.images.create({
+                            width: img.width,
+                            height: img.height,
+                            user: user,
+                            file: img.file,
+                            ext: img.extension
+                        }));
+                    });
+                    return Promise.all(for_saving);
+                }).then(function() {
+                   resolve();
+                }).catch(function(err) {
+                    reject(err);
+                })
             });
         }
         else if(type == 'two') {

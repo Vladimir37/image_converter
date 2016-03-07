@@ -12,7 +12,9 @@ sequelize.authenticate().then(function() {
     console.log('Connection error: ' + err);
 });
 
-var users = sequelize.define('users', {
+var tables = {};
+
+tables.users = sequelize.define('users', {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -23,7 +25,7 @@ var users = sequelize.define('users', {
     status: Sequelize.INTEGER
 });
 
-var images = sequelize.define('images', {
+tables.images = sequelize.define('images', {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -32,14 +34,16 @@ var images = sequelize.define('images', {
     width: Sequelize.INTEGER,
     height: Sequelize.INTEGER,
     user: Sequelize.INTEGER,
-    file: Sequelize.TEXT,
+    file: Sequelize.TEXT('long'),
     ext: Sequelize.TEXT
 });
 
-users.sync().then(function() {
-    //success
-}, function(err) {
-    console.log('Database error: ' + err);
-});
+for(var table in tables) {
+    tables[table].sync().then(function() {
+        //success
+    }, function(err) {
+        console.log('Database error: ' + err);
+    });
+}
 
-module.exports = users;
+module.exports = tables;

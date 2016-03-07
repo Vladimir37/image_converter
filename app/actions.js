@@ -3,29 +3,11 @@ var fs = require('fs');
 var compare = require('./processing');
 var saving = require('./saving');
 var auth = require('./db/auth');
-var users = require('./db/models');
+var models = require('./db/models');
 var crypt = require('./crypt');
 var convert = require('./converting');
 
 // router
-function index(req, res, next) {
-    auth.check_bool(req).then(function(status) {
-        res.locals.user_status = status;
-        res.render('index.jade');
-    }, function() {
-        res.render('login.jade');
-    });
-};
-
-function manage_front(req, res, next) {
-    users.findAll().then(function(users) {
-        res.render('manage.jade', {users: users});
-    }, function(err) {
-        console.log(err);
-        res.end('Server error');
-    });
-}
-
 function manage_back(req, res, next) {
     var type = req.body.type;
     //creating
@@ -34,7 +16,7 @@ function manage_back(req, res, next) {
         var raw_pass = req.body.pass;
         var status = req.body.status;
         var pass = crypt.encrupt(raw_pass);
-        users.create({
+        models.users.create({
             name,
             pass,
             status
@@ -48,7 +30,7 @@ function manage_back(req, res, next) {
     //deleting
     else if(type == 2) {
         var id = req.body.id;
-        users.destroy({
+        models.users.destroy({
             where: {
                 id
             }
@@ -120,9 +102,7 @@ function upload(req, res, next) {
     });
 };
 
-exports.index = index;
 exports.two_pics = two_pics;
 exports.all_pics = all_pics;
 exports.upload = upload;
-exports.manage_front = manage_front;
 exports.manage_back = manage_back;

@@ -18,8 +18,9 @@ function image_convert(img, mime_type, name) {
                 extension,
                 width: result[1].width,
                 height: result[1].height,
-                file: JSON.stringify(result[0])
+                file: result[0]
             };
+            fs.unlink(img);
             resolve(image_data)
         }).catch(function(err) {
             console.log(err);

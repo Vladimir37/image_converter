@@ -1,4 +1,4 @@
-var users = require('./models');
+var models = require('./models');
 var crypt = require('../crypt');
 
 function authentication(req, res, next) {
@@ -8,7 +8,7 @@ function authentication(req, res, next) {
         res.end('Incorrect login or password!');
         return false;
     }
-    users.findOne({
+    models.users.findOne({
         where: {
             name: login
         }
@@ -35,7 +35,7 @@ function authentication(req, res, next) {
 function check(req, res, next) {
     var cookie = crypt.decrypt(req.cookies.ic_login);
     if(cookie) {
-        users.findOne({
+        models.users.findOne({
             where: {
                 name: cookie
             }
@@ -60,7 +60,7 @@ function check_bool(req) {
     return new Promise(function(resolve, reject) {
         var cookie = crypt.decrypt(req.cookies.ic_login);
         if (cookie) {
-            users.findOne({
+            models.users.findOne({
                 where: {
                     name: cookie
                 }
@@ -82,7 +82,7 @@ function check_bool(req) {
 function check_status(req, res, next) {
     var cookie = crypt.decrypt(req.cookies.ic_login);
     if(cookie) {
-        users.findOne({
+        models.users.findOne({
             where: {
                 name: cookie
             }
