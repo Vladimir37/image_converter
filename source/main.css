@@ -5,6 +5,11 @@ canvas {
 .files_upload_field {
     display: block;
 }
+.gallery_figure {
+    display: inline-block;
+    padding: 10px;
+    border: 1px solid black;
+}
 .gallery_figure img {
     max-width: 100px;
     max-height: 100px;

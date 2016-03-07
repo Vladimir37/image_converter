@@ -3,14 +3,13 @@ var is = require('image-size');
 var mime = require('mime-types');
 var pixel = require('pixel-getter');
 
-function image_convert(img, mime_type, name) {
+function image_convert(img, mime_type) {
     return new Promise(function (resolve, reject) {
         var image_data = {
-            name,
             extension: null,
             width: null,
             height: null,
-            pixels: null
+            file: null
         };
         var extension = mime.extension(mime_type);
         Promise.all([buffer(img), resolution(img)]).then(function(result) {
