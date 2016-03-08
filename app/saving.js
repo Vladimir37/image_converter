@@ -58,7 +58,7 @@ function saving(type, req, res) {
                     console.log(err);
                     reject('Error!');
                 }
-                var CliqueCount = fields.count;
+                var CliqueCount = fields.CliqueCount;
                 Promise.all([
                     convert(files.one.path, files.one.type),
                     convert(files.two.path, files.two.type)
@@ -68,7 +68,7 @@ function saving(type, req, res) {
                         resizing(files[1])
                     ]);
                 }).then(function(images) {
-                    resolve(images);
+                    resolve([images, CliqueCount]);
                 }).catch(function(err) {
                     console.log(err);
                     reject('Error!');
@@ -81,7 +81,7 @@ function saving(type, req, res) {
                     console.log(err);
                     reject('Error!');
                 }
-                var CliqueCount = fields.count;
+                var CliqueCount = fields.CliqueCount;
                 var img = files.one;
                 var ext = mime.extension(img.type);
                 var date_name = new Date().getTime();

@@ -49,7 +49,7 @@ function manage_back(req, res, next) {
 // image handling
 function two_pics(req, res, next) {
     saving('two', req, res).then(function(images) {
-        return compare(images[0], images[1], req.body.count);
+        return compare(images[0][0], images[0][1], images[1]);
     }).then(function(result) {
         res.render('result.jade', result);
     }).catch(function(err) {
