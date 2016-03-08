@@ -89,7 +89,12 @@ function all_pics(req, res, next) {
         result.forEach(function(item) {
             console.log(item.number);
         });
-        res.render('result.jade', result[0]);
+        var first_three = {
+            one: result[0],
+            two: result[1],
+            three: result[2]
+        };
+        res.render('result_many.jade', first_three);
     }).catch(function(err) {
         console.log(err);
         res.end('Error!');

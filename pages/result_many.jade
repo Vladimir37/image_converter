@@ -1,0 +1,21 @@
+extends _layout_
+
+block scripts
+    script(src="/src/result_render.js")
+
+block content
+    section.content
+        article.result_canvas
+            h1 Num: #{one.number}
+            canvas(width=one.first.cols height=one.first.rows data-elem=one.first.data).first_canv
+            canvas(width=one.second.cols height=one.second.rows data-elem=one.second.data).second_canv
+        - if(two)
+            article.result_canvas
+                h1 Num: #{two.number}
+                canvas(width=two.first.cols height=two.first.rows data-elem=two.first.data).first_canv
+                canvas(width=two.second.cols height=two.second.rows data-elem=two.second.data).second_canv
+        - if(three)
+            article.result_canvas
+                h1 Num: #{three.number}
+                canvas(width=three.first.cols height=three.first.rows data-elem=three.first.data).first_canv
+                canvas(width=three.second.cols height=three.second.rows data-elem=three.second.data).second_canv

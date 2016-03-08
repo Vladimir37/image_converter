@@ -5,6 +5,7 @@ block scripts
 
 block content
     section.content
-        h1 Num: #{number}
-        canvas(width=first.cols height=first.rows data-elem=first.data)#first
-        canvas(width=second.cols height=second.rows data-elem=second.data)#second
+        article.result_canvas
+            h1 Num: #{number}
+            canvas(width=first.cols height=first.rows data-elem=first.data).first_canv
+            canvas(width=second.cols height=second.rows data-elem=second.data).second_canv
