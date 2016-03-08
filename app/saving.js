@@ -83,20 +83,13 @@ function saving(type, req, res) {
                 }
                 var CliqueCount = fields.CliqueCount;
                 var img = files.one;
-                var ext = mime.extension(img.type);
-                var date_name = new Date().getTime();
-                fs.rename(img.path, 'images/all_pics/' + date_name + '.' + ext, function (err) {
-                    if (err) {
-                        reject('Error!');
-                    }
-                    else {
-                        resizing('all_pics/' + date_name + '.' + ext).then(function() {
-                            resolve([date_name + '.' + ext, CliqueCount]);
-                        }, function(err) {
-                            reject('Error!');
-                        });
-                    }
-                });
+                convert(img.path, img.type).then(function(image) {
+                    return resizing(image);
+                }).then(function(image) {
+                    resolve([image, CliqueCount]);
+                }).catch(function(err) {
+                    reject(err);
+                })
             });
         }
         else {

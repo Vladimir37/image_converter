@@ -23,7 +23,6 @@ var libcerno = ffi.Library('app/libcerno', {
 
 function compare(first, second, count) {
     return new Promise(function(resolve, reject) {
-        console.log(count);
         var all = {
             img1: first.file,
             img2: second.file,
@@ -105,7 +104,6 @@ function compare(first, second, count) {
                 'data': res2_arr
             });
             var result_number = libcerno.compare_images(count, img_s_1, img_s_2, res1, res2);
-            console.log(result_number);
             var image_result_arr_first = [];
             for (var i = 0; i < res1.rows; ++i) {
                 for (var j = 0; j < res1.cols; ++j) {

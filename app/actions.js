@@ -6,6 +6,7 @@ var auth = require('./db/auth');
 var models = require('./db/models');
 var crypt = require('./crypt');
 var convert = require('./converting');
+var resizing = require('./resizing');
 
 // router
 function manage_back(req, res, next) {
@@ -58,27 +59,29 @@ function two_pics(req, res, next) {
 };
 
 function all_pics(req, res, next) {
-    var file_name;
+    var user_id = res.user_id;
+    var target_file;
     var CliqueCount;
     saving('all', req, res).then(function(name) {
-        file_name = name[0];
+        target_file = name[0];
         CliqueCount = name[1];
-        return new Promise(function(resolve, reject) {
-            fs.readdir('images/saved', function (err, data) {
-                if (err) {
-                    return reject(err);
-                }
-                else {
-                    return resolve(data);
-                }
-            });
+        return models.images.findAll({
+            where: {
+                user: user_id
+            }
         });
     }).then(function(images) {
-        var all_images = [];
-        images.forEach(function(item) {
-            all_images.push(compare('all_pics/' + file_name, 'saved/' + item, CliqueCount));
+        var for_resizing = [];
+        images.forEach(function(image) {
+            for_resizing.push(resizing(image));
         });
-        return Promise.all(all_images);
+        return Promise.all(for_resizing);
+    }).then(function(images) {
+        var for_compare = [];
+        images.forEach(function(image) {
+            for_compare.push(compare(target_file, image, CliqueCount));
+        });
+        return Promise.all(for_compare);
     }).then(function(result) {
         result.sort(function(a, b) {
             return b.number - a.number;
