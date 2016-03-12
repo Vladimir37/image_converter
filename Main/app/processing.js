@@ -4,7 +4,6 @@ var ffi = require('ffi');
 var ref = require('ref');
 var Struct = require('ref-struct');
 var ArrayType = require('ref-array');
-var is = require('image-size');
 var pixel = require('pixel-getter');
 
 var int = ref.types.int;
@@ -35,6 +34,8 @@ function compare(first, second, count) {
                 height: second.height
             }
         };
+        //fs.writeFileSync('test.jpg', first.file);
+        //console.log(first.file);
         //promises -------------------------
         function im_a1() {
             return new Promise(function (resolve, reject) {
@@ -103,6 +104,7 @@ function compare(first, second, count) {
                 'cols': all.resolution2.width * 4,
                 'data': res2_arr
             });
+            console.log('COMPARISON START');
             var result_number = libcerno.compare_images(count, img_s_1, img_s_2, res1, res2);
             var image_result_arr_first = [];
             for (var i = 0; i < res1.rows; ++i) {
