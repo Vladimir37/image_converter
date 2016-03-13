@@ -1,6 +1,8 @@
 extends _layout_
 
 block content
+    a(href='/')
+        input(type='button' value='Index')
     h1 Gallery
     - each image, i in images
         figure.gallery_figure

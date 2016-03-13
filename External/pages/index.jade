@@ -9,6 +9,8 @@ block content
    - if(user_status)
        a(href='/manage')
            input(type='button' value='Manage')
+   a(href='/gallery')
+       input(type='button' value='Gallery')
    article.form
        form(action="/two_pics" method="POST" enctype="multipart/form-data")
            h2 Two pics

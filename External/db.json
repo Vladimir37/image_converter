@@ -1,0 +1,7 @@
+{
+    "database": "comparison",
+    "name": "root",
+    "pass": "node_db",
+    "dialect": "mysql",
+    "host": "localhost"
+}

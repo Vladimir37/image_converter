@@ -9,7 +9,9 @@ html(lang="en")
                 input(type='button' value='Logout')
             a(href='/')
                 input(type='button' value='Index')
-            ul
+            a(href='/gallery')
+                input(type='button' value='Gallery')
+        ul
                 - each user, i in users
                     - var status = user.status == 0 ? 'watcher' : 'administrator'
                     li #{user.name} (#{status})

@@ -1,8 +1,10 @@
 var Sequelize = require('sequelize');
 
-var sequelize = new Sequelize('comparison', 'root', 'node_db', {
-    dialect: 'mysql',
-    host: 'localhost',
+var db = require('../../db.json');
+
+var sequelize = new Sequelize(db.database, db.name, db.pass, {
+    dialect: db.dialect,
+    host: db.host,
     logging: false
 });
 
