@@ -1,5 +1,6 @@
 {
     "port": 3000,
+    "main_server": "http://localhost:3001/",
     "width": 43,
     "height": 76
 }

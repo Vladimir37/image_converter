@@ -42,37 +42,6 @@ function buffer(img) {
     })
 }
 
-//function pixels(buffer) {
-//    return new Promise(function(resolve, reject) {
-//        pixel.get(buffer, function (err, pixels) {
-//            if (err) {
-//                reject(err);
-//            }
-//            else {
-//                var image_result = [];
-//                pixels[0].forEach(function (item) {
-//                    image_result.push(item.r, item.g, item.b);
-//                });
-//                resolve(image_result);
-//            }
-//        });
-//    });
-//}
-//
-//function image_array(img) {
-//    return new Promise(function(resolve, reject) {
-//        buffer(img).then(function(buffer) {
-//            return pixels(buffer);
-//        }).then(function(array) {
-//            resolve(array);
-//        }).catch(function(err) {
-//            console.log(err);
-//            reject();
-//        })
-//    });
-//}
-// to image array END
-
 function resolution(img) {
     return new Promise(function (resolve, reject) {
         is(img, function (err, result) {

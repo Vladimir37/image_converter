@@ -1,6 +1,8 @@
 var fs = require('fs');
 
-var compare = require('./processing');
+//var compare = require('./processing');
+var compare = require('./send');
+
 var saving = require('./saving');
 var auth = require('./db/auth');
 var models = require('./db/models');
@@ -54,7 +56,8 @@ function two_pics(req, res, next) {
     }).then(function(result) {
         res.render('result.jade', result);
     }).catch(function(err) {
-        res.end(err);
+        console.log(err);
+        res.end('Server error');
     });
 };
 
@@ -106,7 +109,7 @@ function upload(req, res, next) {
         res.end('Success!');
     }, function(err) {
         console.log(err);
-        res.end(err);
+        res.end('Server error');
     });
 };
 
