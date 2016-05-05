@@ -24,7 +24,7 @@ function saving(type, req, res) {
                     if(files[file].type.slice(0, 5) == 'image') {
                         images_arr.push(files[file]);
                     }
-                };
+                }
                 var convert_images = [];
                 images_arr.forEach(function(image) {
                     convert_images.push(convert(image.path, image.type));

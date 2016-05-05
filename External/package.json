@@ -6,6 +6,7 @@
     },
     "dependencies": {
         "request": "*",
+        "express": "*",
         "body-parser": "^1.15.0",
         "consolidate": "*",
         "cookie-parser": "^1.4.1",

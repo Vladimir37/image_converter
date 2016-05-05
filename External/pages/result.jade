@@ -6,6 +6,10 @@ block scripts
 block content
     section.content
         article.result_canvas
-            h1 Num: #{number}
+            - var className;
+            - if(number >= 1200) className = 'res_green'
+            - else if(number >= 20) className = 'res_amber'
+            - else className = 'res_red'
+            h1(class=className) Num: #{number}
             canvas(width=first.cols height=first.rows data-elem=first.data).first_canv
             canvas(width=second.cols height=second.rows data-elem=second.data).second_canv

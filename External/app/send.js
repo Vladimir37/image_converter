@@ -4,6 +4,9 @@ var fs = require('fs');
 var config = require('../config.json');
 
 function sending(image_one, image_two, clicks) {
+    // Standard clicks
+    clicks = 100;
+    // Standard clicks
     return new Promise(function(resolve, reject) {
         var form_data = {
             one: image_one,
