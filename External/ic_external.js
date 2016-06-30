@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.set('view engine', 'jade');
-app.set('views', __dirname + '/pages');
+app.set('views', __dirname + '/client/pages');
 
 app.get('/', render.index);
 
@@ -34,6 +34,6 @@ app.post('/two_pics', auth.check, actions.two_pics);
 app.post('/all_pics', auth.check, actions.all_pics);
 app.post('/upload', auth.check, actions.upload);
 
-app.use('/src', express.static(__dirname + '/source'));
+app.use('/src', express.static(__dirname + '/client/source'));
 
 http.createServer(app).listen(config.port);

@@ -8,7 +8,7 @@ function index(req, res, next) {
     }, function() {
         res.render('login.jade');
     });
-};
+}
 
 function manage_front(req, res, next) {
     models.users.findAll().then(function(users) {

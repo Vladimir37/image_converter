@@ -1,3 +1,8 @@
+.content {
+    width: 950px;
+    margin: 10px auto;
+}
+
 canvas {
     border: 1px solid black;
     margin: 5px;
