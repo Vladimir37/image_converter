@@ -1,24 +1,26 @@
 extends _layout_
 
 block content
-    form(method='POST' action='/login')
-        md-grid-list(md-cols="8" md-row-height="40px")
-            md-grid-tile(md-colspan="4")
-                span Username
-            md-grid-tile(md-colspan="4")
-                input(type='text' name='login' placeholder='Login' required)
-        md-grid-list(md-cols="8" md-row-height="40px")
-            md-grid-tile(md-colspan="4")
-                span Password
-            md-grid-tile(md-colspan="4")
-                input(type='password' name='pass' placeholder='Password' required)
-        md-grid-list(md-cols="8" md-row-height="50px")
-            md-grid-tile(md-colspan="4")
-                md-checkbox I agree to the EULA
-            md-grid-tile(md-colspan="2")
-            md-grid-tile(md-colspan="2")
-                input(type='submit' value='Enter')
-        md-grid-list(md-cols="8" md-row-height="40px")
-            md-grid-tile(md-colspan="2") Forgot username?
-            md-grid-tile(md-colspan="4")
-            md-grid-tile(md-colspan="2") Forgot password?
+    section.login_block
+        form(method='POST' action='/login')
+            md-grid-list(md-cols="8" md-row-height="40px")
+                md-grid-tile(md-colspan="4").label_log
+                    article Username
+                md-grid-tile(md-colspan="4")
+                    input(type='text' name='login' class='log_input' placeholder='Login' required)
+            md-grid-list(md-cols="8" md-row-height="40px")
+                md-grid-tile(md-colspan="4").label_log
+                    article Password
+                md-grid-tile(md-colspan="4")
+                    input(type='password' name='pass' class='log_input' placeholder='Password' required)
+            md-grid-list(md-cols="8" md-row-height="50px")
+                md-grid-tile(md-colspan="6").label_log
+                    md-checkbox I agree to the EULA
+                md-grid-tile(md-colspan="2").label_log
+                    md-button(class="md-raised md-primary") Login
+            md-grid-list(md-cols="8" md-row-height="40px")
+                md-grid-tile(md-colspan="3").label_log
+                    a.help_link Forgot username?
+                md-grid-tile(md-colspan="2")
+                md-grid-tile(md-colspan="3").label_log
+                    a.help_link Forgot password?

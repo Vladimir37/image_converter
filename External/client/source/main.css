@@ -29,3 +29,23 @@ canvas {
 .res_red {
     color: red;
 }
+
+.log_input {
+    background: grey;
+    width: 100%;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 3px;
+    border-radius: 3px;
+}
+.help_link {
+    font-size: 12px;
+}
+.label_log figure {
+    justify-content: right;
+}
+.login_block {
+    width: 400px;
+    margin: 0 auto;
+}
