@@ -5,7 +5,7 @@ function authentication(req, res, next) {
     var login = req.body.login;
     var pass = req.body.pass;
     if(!login || !pass) {
-        res.end('Incorrect login or password!');
+        res.end('1');
         return false;
     }
     models.users.findOne({
@@ -14,21 +14,21 @@ function authentication(req, res, next) {
         }
     }).then(function(target_user) {
         if(!target_user) {
-            res.end('Incorrect login or password!');
+            res.end('1');
             return false;
         }
         var target_pass = crypt.decrypt(target_user.pass);
         if(target_pass == pass) {
             res.cookie('ic_login', crypt.encrupt(target_user.name));
-            res.redirect('/');
+            res.end('0');
         }
         else {
-            res.end('Incorrect login or password!');
+            res.end('1');
             return false;
         }
     }).catch(function(err) {
         console.log(err);
-        res.end('Server error.')
+        res.end('2');
     });
 }
 

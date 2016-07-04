@@ -4,15 +4,61 @@ block scripts
     script(src="/src/result_render.js")
 
 block content
-    section.content
-        article.result_canvas
-            - var className;
-            - if(one.number >= 1200) className = 'res_green'
-            - else if(one.number >= 20) className = 'res_amber'
-            - else className = 'res_red'
-            h1(class=className) Num: #{one.number}
-            canvas(width=one.first.cols height=one.first.rows data-elem=one.first.data).first_canv
-            canvas(width=one.second.cols height=one.second.rows data-elem=one.second.data).second_canv
+    section.result.result_many
+        article.logo_panel
+            md-grid-list(md-cols="8" md-row-height="250px")
+                img(alt="logo")
+        article.top_panel
+            md-grid-list(md-cols="8" md-row-height="40px")
+                md-grid-tile(md-colspan="1")
+                    md-button(class="md-raised md-primary") Capture
+                md-grid-tile(md-colspan="1")
+                    md-button(class="md-raised md-primary") Add
+                md-grid-tile(md-colspan="2")
+                    h3 Client logo
+                md-grid-tile(md-colspan="1")
+                    md-button(class="md-raised md-primary") Start
+                md-grid-tile(md-colspan="1")
+                    md-button(class="md-raised md-primary") Stop
+
+        article.main
+            md-grid-list(md-cols="8" md-row-height="200px")
+                md-grid-tile(md-colspan="3")
+                    md-card(md-theme="default", md-theme-watch='')
+                        md-card-title
+                            md-card-title-text
+                                span.md-headline Card with image
+                                span.md-subhead Large
+                            md-card-title-media
+                                .md-media-lg.card-media
+                                    //canvas(width=one.first.cols height=one.first.rows data-elem=one.first.data).first_canv
+                                    canvas().first_canv
+                md-grid-tile(md-colspan="2")
+                    md-card(md-theme="default", md-theme-watch='')
+                        md-card-title
+                            md-grid-list(md-cols="2" md-row-height="200px")
+                                md-grid-tile(md-colspan="1")
+                                    span One
+                                md-grid-tile(md-colspan="1")
+                                    span Two
+                md-grid-tile(md-colspan="3")
+                    md-card(md-theme="default", md-theme-watch='')
+                        md-card-title
+                            md-card-title-text
+                                span.md-headline Card with image
+                                span.md-subhead Large
+                            md-card-title-media
+                                .md-media-lg.card-media
+                                    //canvas(width=one.second.cols height=one.second.rows data-elem=one.second.data).second_canv
+                                    canvas().second_canv
+            //article.result_canvas
+            //- var className;
+            //- if(one.number >= 1200) className = 'res_green'
+            //- else if(one.number >= 20) className = 'res_amber'
+            //- else className = 'res_red'
+            //h1(class=className) Num: #{one.number}
+            //canvas(width=one.first.cols height=one.first.rows data-elem=one.first.data).first_canv
+            //canvas(width=one.second.cols height=one.second.rows data-elem=one.second.data).second_canv
         - if(two)
             article.result_canvas
                 - var className;

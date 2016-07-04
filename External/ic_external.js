@@ -20,6 +20,12 @@ app.set('view engine', 'jade');
 app.set('views', __dirname + '/client/pages');
 
 app.get('/', render.index);
+app.get('/qw', function (req, res) {
+    res.render('result_many.jade', {
+        one: 0,
+        two: 0
+    });
+});
 
 app.get('/gallery', auth.check, render.gallery);
 app.get('/image/:num', auth.check, render.image);

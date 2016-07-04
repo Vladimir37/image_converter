@@ -31,12 +31,12 @@ canvas {
 }
 
 .log_input {
-    background: grey;
+    background: #E1E1E1;
     width: 100%;
     border: none;
     outline: none;
-    color: white;
-    padding: 3px;
+    color: black;
+    padding: 5px;
     border-radius: 3px;
 }
 .help_link {
@@ -48,4 +48,20 @@ canvas {
 .login_block {
     width: 400px;
     margin: 0 auto;
+}
+.alert {
+    border: 2px solid #d24248;
+    border-radius: 4px;
+    background: #ff4d66;
+    color: white;
+    padding: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+.top_panel {
+    background: #0643A0;
+    color: white;
+}
+.logo_panel {
+    background: white;
 }
