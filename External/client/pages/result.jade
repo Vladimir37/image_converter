@@ -4,12 +4,54 @@ block scripts
     script(src="/src/result_render.js")
 
 block content
-    section.content
-        article.result_canvas
-            - var className;
-            - if(number >= 1200) className = 'res_green'
-            - else if(number >= 20) className = 'res_amber'
-            - else className = 'res_red'
-            h1(class=className) Num: #{number}
-            canvas(width=first.cols height=first.rows data-elem=first.data).first_canv
-            canvas(width=second.cols height=second.rows data-elem=second.data).second_canv
+    section.result.result_many.result_canvas
+        article.logo_panel
+            md-grid-list(md-cols="5" md-row-height="60px")
+                md-grid-tile(md-colspan="2")
+                md-grid-tile(md-colspan="1")
+                    img(alt="logo" src="/src/img/logo.png").logo_img
+                md-grid-tile(md-colspan="2")
+        article.top_panel
+            md-grid-list(md-cols="6" md-row-height="40px")
+                md-grid-tile(md-colspan="1")
+                    md-button(class="md-raised md-primary") Capture
+                md-grid-tile(md-colspan="1")
+                    md-button(class="md-raised md-primary") Add
+                md-grid-tile(md-colspan="2")
+                    h3 Client logo
+                md-grid-tile(md-colspan="1")
+                    md-button(class="md-raised md-primary") Start
+                md-grid-tile(md-colspan="1")
+                    md-button(class="md-raised md-primary") Stop
+
+        article.main
+            md-grid-list(md-cols="8" md-row-height="400px")
+                md-grid-tile(md-colspan="3")
+                    md-card(md-theme="default", md-theme-watch='')
+                        md-card-title
+                            md-card-title-text
+                                .md-media-lg.card-media
+                                    canvas(width=first.cols height=first.rows data-elem=first.data).first_canv
+                md-grid-tile(md-colspan="2")
+                    md-card(md-theme="default", md-theme-watch='')
+                        md-card-title
+                            md-card-title-text
+                                article.res_circle.res_green
+                                article.delimiter
+                                article.res_circle.res_amber
+                                article.delimiter
+                                article.res_circle.res_red
+                            md-card-title-text
+                                article(style="width: 20px")
+                            md-card-title-text
+                                article.res_descript >90%
+                                article.delimiter
+                                article.res_descript >60%
+                                article.delimiter
+                                article.res_descript <50%
+                md-grid-tile(md-colspan="3")
+                    md-card(md-theme="default", md-theme-watch='')
+                        md-card-title
+                            md-card-title-text
+                                .md-media-lg.card-media
+                                    canvas(width=second.cols height=second.rows data-elem=second.data).second_canv

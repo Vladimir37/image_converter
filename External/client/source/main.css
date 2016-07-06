@@ -20,14 +20,23 @@ canvas {
     max-height: 100px;
 }
 
+.res_circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
 .res_green {
-    color: green;
+    background: #3AB549;
 }
 .res_amber {
-    color: #FFC200;
+    background: #E9AE48;
 }
 .res_red {
-    color: red;
+    background: #EF595A;
+}
+.res_descript {
+    line-height: 50px;
+    font-size: 35px;
 }
 
 .log_input {
@@ -64,4 +73,16 @@ canvas {
 }
 .logo_panel {
     background: white;
+    text-align: center;
+}
+.logo_img {
+    width: 70px;
+}
+.delimiter {
+    height: 5px;
+}
+
+.md-button {
+    background: #0643A0 !important;
+    border: 1px solid white;
 }

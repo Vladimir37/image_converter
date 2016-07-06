@@ -6,10 +6,13 @@ block scripts
 block content
     section.result.result_many
         article.logo_panel
-            md-grid-list(md-cols="8" md-row-height="250px")
-                img(alt="logo")
+            md-grid-list(md-cols="5" md-row-height="60px")
+                md-grid-tile(md-colspan="2")
+                md-grid-tile(md-colspan="1")
+                    img(alt="logo" src="/src/img/logo.png").logo_img
+                md-grid-tile(md-colspan="2")
         article.top_panel
-            md-grid-list(md-cols="8" md-row-height="40px")
+            md-grid-list(md-cols="6" md-row-height="50px")
                 md-grid-tile(md-colspan="1")
                     md-button(class="md-raised md-primary") Capture
                 md-grid-tile(md-colspan="1")
@@ -22,58 +25,70 @@ block content
                     md-button(class="md-raised md-primary") Stop
 
         article.main
-            md-grid-list(md-cols="8" md-row-height="200px")
+            md-grid-list(md-cols="8" md-row-height="450px").result_canvas
                 md-grid-tile(md-colspan="3")
                     md-card(md-theme="default", md-theme-watch='')
                         md-card-title
                             md-card-title-text
-                                span.md-headline Card with image
-                                span.md-subhead Large
-                            md-card-title-media
                                 .md-media-lg.card-media
-                                    //canvas(width=one.first.cols height=one.first.rows data-elem=one.first.data).first_canv
-                                    canvas().first_canv
+                                    canvas(width=one.first.cols height=one.first.rows data-elem=one.first.data).first_canv
+                                    //canvas().first_canv
                 md-grid-tile(md-colspan="2")
                     md-card(md-theme="default", md-theme-watch='')
                         md-card-title
-                            md-grid-list(md-cols="2" md-row-height="200px")
-                                md-grid-tile(md-colspan="1")
-                                    span One
-                                md-grid-tile(md-colspan="1")
-                                    span Two
+                            md-card-title-text
+                                article.res_circle.res_green
+                                article.delimiter
+                                article.res_circle.res_amber
+                                article.delimiter
+                                article.res_circle.res_red
+                            md-card-title-text
+                                article(style="width: 20px")
+                            md-card-title-text
+                                article.res_descript >90%
+                                article.delimiter
+                                article.res_descript >60%
+                                article.delimiter
+                                article.res_descript <50%
                 md-grid-tile(md-colspan="3")
                     md-card(md-theme="default", md-theme-watch='')
                         md-card-title
                             md-card-title-text
-                                span.md-headline Card with image
-                                span.md-subhead Large
-                            md-card-title-media
                                 .md-media-lg.card-media
-                                    //canvas(width=one.second.cols height=one.second.rows data-elem=one.second.data).second_canv
-                                    canvas().second_canv
-            //article.result_canvas
-            //- var className;
-            //- if(one.number >= 1200) className = 'res_green'
-            //- else if(one.number >= 20) className = 'res_amber'
-            //- else className = 'res_red'
-            //h1(class=className) Num: #{one.number}
-            //canvas(width=one.first.cols height=one.first.rows data-elem=one.first.data).first_canv
-            //canvas(width=one.second.cols height=one.second.rows data-elem=one.second.data).second_canv
+                                    canvas(width=one.second.cols height=one.second.rows data-elem=one.second.data).second_canv
+                                    //canvas().second_canv
         - if(two)
             article.result_canvas
-                - var className;
-                - if(two.number >= 1200) className = 'res_green'
-                - else if(two.number >= 20) className = 'res_amber'
-                - else className = 'res_red'
-                h1(class=className) Num: #{two.number}
-                canvas(width=two.first.cols height=two.first.rows data-elem=two.first.data).first_canv
-                canvas(width=two.second.cols height=two.second.rows data-elem=two.second.data).second_canv
+                md-grid-list(md-cols="8" md-row-height="450px").result_canvas
+                    md-grid-tile(md-colspan="3")
+                        md-card(md-theme="default", md-theme-watch='')
+                            md-card-title
+                                md-card-title-text
+                                    .md-media-lg.card-media
+                                        canvas(width=two.first.cols height=two.first.rows data-elem=two.first.data).first_canv
+                                        //canvas().first_canv
+                    md-grid-tile(md-colspan="2")
+                    md-grid-tile(md-colspan="3")
+                        md-card(md-theme="default", md-theme-watch='')
+                            md-card-title
+                                md-card-title-text
+                                    .md-media-lg.card-media
+                                        canvas(width=two.second.cols height=two.second.rows data-elem=two.second.data).second_canv
+                                        //canvas().second_canv
         - if(three)
-            article.result_canvas
-                - var className;
-                - if(three.number >= 1200) className = 'res_green'
-                - else if(three.number >= 20) className = 'res_amber'
-                - else className = 'res_red'
-                h1(class=className) Num: #{three.number}
-                canvas(width=three.first.cols height=three.first.rows data-elem=three.first.data).first_canv
-                canvas(width=three.second.cols height=three.second.rows data-elem=three.second.data).second_canv
+            md-grid-list(md-cols="8" md-row-height="450px").result_canvas
+                md-grid-tile(md-colspan="3")
+                    md-card(md-theme="default", md-theme-watch='')
+                        md-card-title
+                            md-card-title-text
+                                .md-media-lg.card-media
+                                    canvas(width=three.first.cols height=three.first.rows data-elem=three.first.data).first_canv
+                                    //canvas().first_canv
+                md-grid-tile(md-colspan="2")
+                md-grid-tile(md-colspan="3")
+                    md-card(md-theme="default", md-theme-watch='')
+                        md-card-title
+                            md-card-title-text
+                                .md-media-lg.card-media
+                                    canvas(width=three.second.cols height=three.second.rows data-elem=three.second.data).second_canv
+                                    //canvas().second_canv

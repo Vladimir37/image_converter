@@ -1,5 +1,6 @@
 $(document).ready(function() {
     var canvas_count = $('.result_canvas').length;
+    console.log('start');
     for(var canv_num = 0; canv_num < canvas_count; canv_num++) {
         var canvas_first = document.getElementsByClassName("first_canv")[canv_num];
         var context_first = canvas_first.getContext("2d");
@@ -9,6 +10,7 @@ $(document).ready(function() {
         var sausage_first = $(canvas_first).data('elem');
         var width_first = canvas_first.width;
         var height_first = canvas_first.height;
+        console.log(sausage_first);
         var pixel_num_first = 0;
         for (var i = 0; i < height_first; i++) {
             for (var j = 0; j < width_first; j++) {
