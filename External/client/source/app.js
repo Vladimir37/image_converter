@@ -34,6 +34,6 @@ app.controller('login', function ($scope, $http) {
         }).catch(function (err) {
             console.log(err);
             $scope.error = 'Server error';
-        })
+        });
     };
 });
