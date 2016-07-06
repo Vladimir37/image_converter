@@ -14,18 +14,18 @@ block content
         article.top_panel
             md-grid-list(md-cols="6" md-row-height="50px")
                 md-grid-tile(md-colspan="1")
-                    md-button(class="md-raised md-primary") Capture
+                    md-button(class="md-raised md-primary md-but-menu") Capture
                 md-grid-tile(md-colspan="1")
-                    md-button(class="md-raised md-primary") Add
+                    md-button(class="md-raised md-primary md-but-menu") Add
                 md-grid-tile(md-colspan="2")
                     h3 Client logo
                 md-grid-tile(md-colspan="1")
-                    md-button(class="md-raised md-primary") Start
+                    md-button(class="md-raised md-primary md-but-menu") Start
                 md-grid-tile(md-colspan="1")
-                    md-button(class="md-raised md-primary") Stop
+                    md-button(class="md-raised md-primary md-but-menu") Stop
 
         article.main
-            md-grid-list(md-cols="8" md-row-height="450px").result_canvas
+            md-grid-list(md-cols="8" md-row-height="400px").result_canvas
                 md-grid-tile(md-colspan="3")
                     md-card(md-theme="default", md-theme-watch='')
                         md-card-title
@@ -58,25 +58,24 @@ block content
                                     canvas(width=one.second.cols height=one.second.rows data-elem=one.second.data).second_canv
                                     //canvas().second_canv
         - if(two)
-            article.result_canvas
-                md-grid-list(md-cols="8" md-row-height="450px").result_canvas
-                    md-grid-tile(md-colspan="3")
-                        md-card(md-theme="default", md-theme-watch='')
-                            md-card-title
-                                md-card-title-text
-                                    .md-media-lg.card-media
-                                        canvas(width=two.first.cols height=two.first.rows data-elem=two.first.data).first_canv
-                                        //canvas().first_canv
-                    md-grid-tile(md-colspan="2")
-                    md-grid-tile(md-colspan="3")
-                        md-card(md-theme="default", md-theme-watch='')
-                            md-card-title
-                                md-card-title-text
-                                    .md-media-lg.card-media
-                                        canvas(width=two.second.cols height=two.second.rows data-elem=two.second.data).second_canv
-                                        //canvas().second_canv
+            md-grid-list(md-cols="8" md-row-height="400px").result_canvas
+                md-grid-tile(md-colspan="3")
+                    md-card(md-theme="default", md-theme-watch='')
+                        md-card-title
+                            md-card-title-text
+                                .md-media-lg.card-media
+                                    canvas(width=two.first.cols height=two.first.rows data-elem=two.first.data).first_canv
+                                    //canvas().first_canv
+                md-grid-tile(md-colspan="2")
+                md-grid-tile(md-colspan="3")
+                    md-card(md-theme="default", md-theme-watch='')
+                        md-card-title
+                            md-card-title-text
+                                .md-media-lg.card-media
+                                    canvas(width=two.second.cols height=two.second.rows data-elem=two.second.data).second_canv
+                                    //canvas().second_canv
         - if(three)
-            md-grid-list(md-cols="8" md-row-height="450px").result_canvas
+            md-grid-list(md-cols="8" md-row-height="400px").result_canvas
                 md-grid-tile(md-colspan="3")
                     md-card(md-theme="default", md-theme-watch='')
                         md-card-title

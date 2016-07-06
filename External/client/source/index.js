@@ -8,5 +8,8 @@ $(document).ready(function() {
             $(this).data('used', 1);
             $('<input type="file" class="files_upload_field" name="file_' + files_count + '" data-used="0">').appendTo('.save_files');
         }
+    });
+    $('.submit').click(function (e) {
+        $(e.target).parent().submit();
     })
 });

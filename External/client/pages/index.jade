@@ -4,40 +4,92 @@ block scripts
     script(src='/src/index.js')
 
 block content
-   a(href='/exit')
-       input(type='button' value='Logout')
-   - if(user_status)
-       a(href='/manage')
-           input(type='button' value='Manage')
-   a(href='/gallery')
-       input(type='button' value='Gallery')
-   article.form
-       form(action="/two_pics" method="POST" enctype="multipart/form-data")
-           h2 Two pics
-           //select(name='CliqueCount')
-           //    option(value='100' selected) Simple scan (100)
-           //    option(value='300') Middle scan (300)
-           //    option(value='1000') Full scan (1000)
-           //br
-           input(type="file" name="one" required)
-           input(type="file" name="two" required)
-           br
-           input(type="submit" value="SUBMIT")
-   article.form
-       form(action="/all_pics" method="POST" enctype="multipart/form-data")
-           h2 All pics
-           //select(name='CliqueCount')
-           //    option(value='100' selected) Simple scan (100)
-           //    option(value='300') Middle scan (300)
-           //    option(value='1000') Full scan (1000)
-           //br
-           input(type="file" name="one" required)
-           br
-           input(type="submit" value="SUBMIT")
-   article.form
-       form(action="/upload" method="POST" enctype="multipart/form-data")
-           h2 Upload image
-           article.save_files
-               input(type="file" class="files_upload_field" name="file_1" data-used="0" required)
-           br
-           input(type="submit" value="SUBMIT")
+    article.logo_panel
+        md-grid-list(md-cols="5" md-row-height="60px")
+            md-grid-tile(md-colspan="2")
+            md-grid-tile(md-colspan="1")
+                img(alt="logo" src="/src/img/logo.png").logo_img
+            md-grid-tile(md-colspan="2")
+    article.top_panel
+        md-grid-list(md-cols="6" md-row-height="50px")
+            md-grid-tile(md-colspan="1")
+                - if(user_status)
+                    a(href='/manage')
+                        md-button(class="md-raised md-primary md-but-menu") Manage
+            md-grid-tile(md-colspan="1")
+                a(href='/gallery')
+                    md-button(class="md-raised md-primary md-but-menu") Gallery
+            md-grid-tile(md-colspan="2")
+                h3 Client logo
+            md-grid-tile(md-colspan="1")
+            md-grid-tile(md-colspan="1")
+                a(href='/exit')
+                    md-button(class="md-raised md-primary md-but-menu") Logout
+    //a(href='/exit')
+    //    input(type='button' value='Logout')
+    //- if(user_status)
+    //    a(href='/manage')
+    //        input(type='button' value='Manage')
+    //a(href='/gallery')
+    //    input(type='button' value='Gallery')
+
+    md-card(md-theme="default", md-theme-watch='')
+        md-card-title
+            md-card-title-text
+                h2 Compare two pics
+                form(action="/two_pics" method="POST" enctype="multipart/form-data")
+                    input(type="file" name="one" required)
+                    input(type="file" name="two" required)
+                    br
+                    md-button(class="md-raised md-primary").submit Compare
+
+    md-card(md-theme="default", md-theme-watch='')
+        md-card-title
+            md-card-title-text
+                form(action="/all_pics" method="POST" enctype="multipart/form-data")
+                    h2 Compare all pics
+                    input(type="file" name="one" required)
+                    br
+                    //input(type="submit" value="SUBMIT")
+                    md-button(class="md-raised md-primary").submit Compare
+
+    md-card(md-theme="default", md-theme-watch='')
+        md-card-title
+            md-card-title-text
+                form(action="/upload" method="POST" enctype="multipart/form-data")
+                    h2 Upload image
+                    article.save_files
+                        input(type="file" class="files_upload_field" name="file_1" data-used="0" required)
+                    br
+                    md-button(class="md-raised md-primary").submit Compare
+
+   //article.form
+   //    form(action="/two_pics" method="POST" enctype="multipart/form-data")
+   //        h2 Two pics
+   //        //select(name='CliqueCount')
+   //        //    option(value='100' selected) Simple scan (100)
+   //        //    option(value='300') Middle scan (300)
+   //        //    option(value='1000') Full scan (1000)
+   //        //br
+   //        input(type="file" name="one" required)
+   //        input(type="file" name="two" required)
+   //        br
+   //        input(type="submit" value="SUBMIT")
+   //article.form
+   //    form(action="/all_pics" method="POST" enctype="multipart/form-data")
+   //        h2 All pics
+   //        //select(name='CliqueCount')
+   //        //    option(value='100' selected) Simple scan (100)
+   //        //    option(value='300') Middle scan (300)
+   //        //    option(value='1000') Full scan (1000)
+   //        //br
+   //        input(type="file" name="one" required)
+   //        br
+   //        input(type="submit" value="SUBMIT")
+   //article.form
+   //    form(action="/upload" method="POST" enctype="multipart/form-data")
+   //        h2 Upload image
+   //        article.save_files
+   //            input(type="file" class="files_upload_field" name="file_1" data-used="0" required)
+   //        br
+   //        input(type="submit" value="SUBMIT")
