@@ -1,32 +1,50 @@
 extends _layout_
 
 block content
-    a(href='/exit')
-        input(type='button' value='Logout')
-    a(href='/')
-        input(type='button' value='Index')
-    a(href='/gallery')
-        input(type='button' value='Gallery')
-    ul
+    article.logo_panel
+        md-grid-list(md-cols="5" md-row-height="60px")
+            md-grid-tile(md-colspan="2")
+            md-grid-tile(md-colspan="1")
+                img(alt="logo" src="/src/img/logo.png").logo_img
+            md-grid-tile(md-colspan="2")
+    article.top_panel
+        md-grid-list(md-cols="6" md-row-height="50px")
+            md-grid-tile(md-colspan="1")
+                a(href='/')
+                    md-button(class="md-raised md-primary md-but-menu") Index
+            md-grid-tile(md-colspan="1")
+                a(href='/gallery')
+                    md-button(class="md-raised md-primary md-but-menu") Gallery
+            md-grid-tile(md-colspan="2")
+                h3 Client logo
+            md-grid-tile(md-colspan="1")
+            md-grid-tile(md-colspan="1")
+                a(href='/exit')
+                    md-button(class="md-raised md-primary md-but-menu") Logout
+
+    article.main(ng-controller='manage')
+        div(flex-xs, flex-gt-xs='50', layout='column')
             - each user, i in users
                 - var status = user.status == 0 ? 'watcher' : 'administrator'
-                li #{user.name} (#{status})
-                    form(method='POST')
-                        input(type='hidden' name='type' value='2')
-                        input(type='hidden' name='id' value=user.id)
-                        input(type='submit' value='Delete')
+                    md-card(md-theme="default", md-theme-watch='' class="manage_card")
+                        md-card-title
+                            md-card-title-text
+                                span.md-headline #{user.name}
+                                span.md-subhead #{status}
+                                md-button(class="md-raised md-primary" ng-click="delete_user(" + user.id + ")")='Delete ' + user.name
         h2 User creating
-        form(method='POST' action='/manage')
-            input(type='hidden' name='type' value='1')
-            input(type='text' name='name' placeholder='Name' required)
-            br
-            input(type='text' name='pass' placeholder='Password' required)
-            br
-            label
-                input(type='radio' name='status' value='0' checked)
-                | Watcher
-            label
-                input(type='radio' name='status' value='1')
-                | Administrator
-            br
-            input(type='submit' value='Create user')
+        div(flex-xs, flex-gt-xs='50', layout='column')
+            md-card(md-theme="default", md-theme-watch='')
+                md-card-title
+                    md-card-title-text
+                        article.alert(ng-if="error") {{ error }}
+                        md-input-container.md-block(flex-gt-sm='')
+                            label Username
+                            input(ng-model='user_data.name')
+                        md-input-container.md-block(flex-gt-sm='')
+                            label Password
+                            input(ng-model='user_data.pass')
+                        md-radio-group(ng-model='user_data.status')
+                            md-radio-button(value='0') Watcher
+                            md-radio-button(value='1') Administrator
+                        md-button(class="md-raised md-primary" ng-click="create_user()") Create

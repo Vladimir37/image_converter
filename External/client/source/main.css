@@ -10,14 +10,12 @@ canvas {
 .files_upload_field {
     display: block;
 }
-.gallery_figure {
-    display: inline-block;
-    padding: 10px;
-    border: 1px solid black;
-}
-.gallery_figure img {
+.gallery_img {
     max-width: 100px;
     max-height: 100px;
+    width: auto;
+    height: auto;
+    float: right;
 }
 
 .res_circle {
@@ -85,4 +83,8 @@ canvas {
 .md-but-menu {
     background: #0643A0 !important;
     border: 1px solid white;
+}
+
+.hidden {
+    display: none;
 }

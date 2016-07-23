@@ -1,11 +1,40 @@
 extends _layout_
 
 block content
-    a(href='/')
-        input(type='button' value='Index')
-    h1 Gallery
-    - each image, i in images
-        figure.gallery_figure
-            a(href='/image/' + image.id)
-                img(src='/image/' + image.id alt='gallery_figure')
-            p #{image.createdAt.toString()}
+    article.logo_panel
+        md-grid-list(md-cols="5" md-row-height="60px")
+            md-grid-tile(md-colspan="2")
+            md-grid-tile(md-colspan="1")
+                img(alt="logo" src="/src/img/logo.png").logo_img
+            md-grid-tile(md-colspan="2")
+    article.top_panel
+        md-grid-list(md-cols="6" md-row-height="50px")
+            md-grid-tile(md-colspan="1")
+                - if(user_status)
+                    a(href='/manage')
+                        md-button(class="md-raised md-primary md-but-menu") Manage
+            md-grid-tile(md-colspan="1")
+                a(href='/')
+                    md-button(class="md-raised md-primary md-but-menu") Index
+            md-grid-tile(md-colspan="2")
+                h3 Client logo
+            md-grid-tile(md-colspan="1")
+            md-grid-tile(md-colspan="1")
+                a(href='/exit')
+                    md-button(class="md-raised md-primary md-but-menu") Logout
+
+    article.main
+        h1 Gallery
+        md-grid-list(md-cols="2" md-row-height="300px")
+            - each image, i in images
+                md-grid-tile(md-colspan="1")
+                    md-card(md-theme="default", md-theme-watch='')
+                        md-card-title
+                            md-card-title-text
+                                - var date = image.createdAt.toString()
+                                span.md-headline Card with image
+                                span.md-subhead=date
+                            md-card-title-media
+                                .md-media-lg.card-media
+                                    a(href='/image/' + image.id)
+                                        img(src='/image/' + image.id alt='gallery_figure' class="gallery_img")

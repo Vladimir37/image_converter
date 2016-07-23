@@ -26,32 +26,36 @@ block content
                 a(href='/exit')
                     md-button(class="md-raised md-primary md-but-menu") Logout
 
-    md-card(md-theme="default", md-theme-watch='')
-        md-card-title
-            md-card-title-text
-                h2 Compare two pics
-                form(action="/two_pics" method="POST" enctype="multipart/form-data")
-                    input(type="file" name="one" required)
-                    input(type="file" name="two" required)
-                    br
-                    md-button(class="md-raised md-primary").submit Compare
+    section(ng-controller="index")
+        md-card(md-theme="default", md-theme-watch='')
+            md-card-title
+                md-card-title-text
+                    h2 Compare two pics
+                    form(action="/two_pics" method="POST" enctype="multipart/form-data")
+                        md-button(class="md-raised md-default" ng-click="upload_compare_one()") {{ value_compare_one }}
+                        input(type="file" id="one_but" class="hidden" name="one" required)
 
-    md-card(md-theme="default", md-theme-watch='')
-        md-card-title
-            md-card-title-text
-                form(action="/all_pics" method="POST" enctype="multipart/form-data")
-                    h2 Compare all pics
-                    input(type="file" name="one" required)
-                    br
-                    //input(type="submit" value="SUBMIT")
-                    md-button(class="md-raised md-primary").submit Compare
+                        md-button(class="md-raised md-default" ng-click="upload_compare_two()") {{ value_compare_two }}
+                        input(type="file" id="two_but" class="hidden" name="two" required)
+                        br
+                        md-button(class="md-raised md-primary").submit Compare
 
-    md-card(md-theme="default", md-theme-watch='')
-        md-card-title
-            md-card-title-text
-                form(action="/upload" method="POST" enctype="multipart/form-data")
-                    h2 Upload image
-                    article.save_files
-                        input(type="file" class="files_upload_field" name="file_1" data-used="0" required)
-                    br
-                    md-button(class="md-raised md-primary").submit Download
+        md-card(md-theme="default", md-theme-watch='')
+            md-card-title
+                md-card-title-text
+                    form(action="/all_pics" method="POST" enctype="multipart/form-data")
+                        h2 Compare all pics
+                        md-button(class="md-raised md-default" ng-click="upload_all()") {{ value_all }}
+                        input(type="file" id="all_but" class="hidden" name="one" required)
+                        br
+                        md-button(class="md-raised md-primary").submit Compare
+
+        md-card(md-theme="default", md-theme-watch='')
+            md-card-title
+                md-card-title-text
+                    form(action="/upload" method="POST" enctype="multipart/form-data")
+                        h2 Upload image
+                        md-button(class="md-raised md-default" ng-click="upload_image()") {{ value_upload }}
+                        input(type="file" id="upload_but" class="hidden" name="file_1" required)
+                        br
+                        md-button(class="md-raised md-primary").submit Upload
