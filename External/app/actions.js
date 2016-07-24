@@ -106,7 +106,7 @@ function all_pics(req, res, next) {
 
 function upload(req, res, next) {
     saving('upload', req, res).then(function() {
-        res.end('Success!');
+        res.redirect('/gallery');
     }, function(err) {
         console.log(err);
         res.end('Server error');

@@ -25,7 +25,6 @@ function saving(type, req, res) {
                 }
                 var Converting = convert(image.path, image.type);
                 var user = res.user_id;
-                console.log(fields);
                 Converting.then(function(image) {
                     return models.images.create({
                         width: image.width,
@@ -36,8 +35,7 @@ function saving(type, req, res) {
                         name: fields.name,
                         gender: fields.gender,
                         nationality: fields.nation,
-                        dob: new Date(fields.dob),
-                        image_date: new Date()
+                        dob: new Date(fields.dob)
                     });
                 }).then(function() {
                     resolve();

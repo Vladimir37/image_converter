@@ -42,8 +42,7 @@ tables.images = sequelize.define('images', {
     name: Sequelize.TEXT,
     gender: Sequelize.INTEGER,
     nationality: Sequelize.TEXT,
-    dob: Sequelize.DATE,
-    image_date: Sequelize.DATE
+    dob: Sequelize.DATE
 });
 
 for(var table in tables) {

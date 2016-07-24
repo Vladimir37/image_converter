@@ -59,10 +59,10 @@ block content
                         md-button(class="md-raised md-default" ng-click="upload_image()") {{ value_upload }}
                         article.hidden
                             input(type="file" id="upload_but" name="img" required)
-                            input(type="hidden" name="name" ng-model="image.name" required)
-                            input(type="hidden" name="dob" ng-model="image.dob" required)
-                            input(type="hidden" name="gender" ng-model="image.gender" required)
-                            input(type="hidden" name="nation" ng-model="image.nation" required)
+                            input(type="text" name="name" ng-model="image.name")
+                            input(type="text" name="dob" ng-model="image.dob")
+                            input(type="text" name="gender" ng-model="image.gender")
+                            input(type="text" name="nation" ng-model="image.nation")
                         div(flex-xs, flex-gt-xs='50', layout='column')
                             md-input-container.md-block(flex-gt-sm='')
                                 label Name
