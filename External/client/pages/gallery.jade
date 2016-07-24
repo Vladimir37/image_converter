@@ -28,12 +28,17 @@ block content
         md-grid-list(md-cols="2" md-row-height="300px")
             - each image, i in images
                 md-grid-tile(md-colspan="1")
-                    md-card(md-theme="default", md-theme-watch='')
+                    md-card(md-theme="default", md-theme-watch='' class="gallery_card")
                         md-card-title
                             md-card-title-text
-                                - var date = image.createdAt.toString()
-                                span.md-headline Card with image
-                                span.md-subhead=date
+                                - var age = new Date().getFullYear() - image.dob.getFullYear()
+                                - var gender = image.gender ? 'Female' : 'Male'
+                                span.md-headline=image.name
+                                span.md-subhead!='<b>Gender:</b> ' + gender
+                                span.md-subhead!='<b>Nationality:</b> ' + image.nationality
+                                span.md-subhead!='<b>D. O. B.:</b> ' + image.dob.toString().slice(0, -23)
+                                span.md-subhead!='<b>Age:</b> ' + age
+                                span.md-subhead!='<b>Image date:</b> ' + image.createdAt.toString().slice(0, -14)
                             md-card-title-media
                                 .md-media-lg.card-media
                                     a(href='/image/' + image.id)

@@ -80,6 +80,11 @@ canvas {
     height: 5px;
 }
 
+.gallery_card b {
+    font-weight: bold;
+    color: #424242;
+}
+
 .md-but-menu {
     background: #0643A0 !important;
     border: 1px solid white;
