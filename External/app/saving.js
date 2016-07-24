@@ -18,32 +18,29 @@ function saving(type, req, res) {
                     console.log(err);
                     reject('Error!');
                 }
+                var image = files.img;
                 // image filer
-                var images_arr = [];
-                for(var file in files) {
-                    if(files[file].type.slice(0, 5) == 'image') {
-                        images_arr.push(files[file]);
-                    }
+                if(image.type.slice(0, 5) != 'image') {
+                    reject('Error!');
                 }
-                var convert_images = [];
-                images_arr.forEach(function(image) {
-                    convert_images.push(convert(image.path, image.type));
-                });
+                var Converting = convert(image.path, image.type);
                 var user = res.user_id;
-                Promise.all(convert_images).then(function(images) {
-                    var for_saving = [];
-                    images.forEach(function(img) {
-                        for_saving.push(models.images.create({
-                            width: img.width,
-                            height: img.height,
-                            user: user,
-                            file: img.file,
-                            ext: img.extension
-                        }));
+                console.log(fields);
+                Converting.then(function(image) {
+                    return models.images.create({
+                        width: image.width,
+                        height: image.height,
+                        user: user,
+                        file: image.file,
+                        ext: image.extension,
+                        name: fields.name,
+                        gender: fields.gender,
+                        nationality: fields.nation,
+                        dob: new Date(fields.dob),
+                        image_date: new Date()
                     });
-                    return Promise.all(for_saving);
                 }).then(function() {
-                   resolve();
+                    resolve();
                 }).catch(function(err) {
                     reject(err);
                 })

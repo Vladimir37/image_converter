@@ -53,9 +53,28 @@ block content
         md-card(md-theme="default", md-theme-watch='')
             md-card-title
                 md-card-title-text
-                    form(action="/upload" method="POST" enctype="multipart/form-data")
+                    form(action="/upload" method="POST" enctype="multipart/form-data" id="upload_form")
                         h2 Upload image
+                        article.alert(ng-if="error") {{ error }}
                         md-button(class="md-raised md-default" ng-click="upload_image()") {{ value_upload }}
-                        input(type="file" id="upload_but" class="hidden" name="file_1" required)
-                        br
-                        md-button(class="md-raised md-primary").submit Upload
+                        article.hidden
+                            input(type="file" id="upload_but" name="img" required)
+                            input(type="hidden" name="name" ng-model="image.name" required)
+                            input(type="hidden" name="dob" ng-model="image.dob" required)
+                            input(type="hidden" name="gender" ng-model="image.gender" required)
+                            input(type="hidden" name="nation" ng-model="image.nation" required)
+                        div(flex-xs, flex-gt-xs='50', layout='column')
+                            md-input-container.md-block(flex-gt-sm='')
+                                label Name
+                                input(ng-model='image.name')
+                            h4 D.O.B.
+                            md-datepicker(ng-model="image.dob" md-placeholder="Enter date" md-open-on-focus="true")
+                            h4 Gender
+                            md-radio-group(ng-model='image.gender')
+                                md-radio-button(value='0') Male
+                                md-radio-button(value='1') Female
+                            br
+                            md-input-container.md-block(flex-gt-sm='')
+                                label Nationality
+                                input(ng-model='image.nation')
+                        md-button(class="md-raised md-primary" ng-click="upload_click()") Upload

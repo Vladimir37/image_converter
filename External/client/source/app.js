@@ -72,6 +72,19 @@ app.controller('manage', function($scope, $http) {
     }
 });
 app.controller('index', function($scope, $http) {
+    $scope.image = {};
+
+    $scope.upload_click = function () {
+        var image = $scope.image;
+        if (!image.dob || !image.name || !image.gender || !image.nation) {
+            $scope.error = 'Required fields are empty';
+        }
+        else {
+            angular.element('#upload_form').submit();
+        }
+    };
+
+    // uploading
     $scope.value_upload = 'Upload image';
     setInterval(function () {
         var value = angular.element('#upload_but').val();

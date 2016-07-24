@@ -37,7 +37,13 @@ tables.images = sequelize.define('images', {
     height: Sequelize.INTEGER,
     user: Sequelize.INTEGER,
     file: Sequelize.TEXT('long'),
-    ext: Sequelize.TEXT
+    ext: Sequelize.TEXT,
+    // image data
+    name: Sequelize.TEXT,
+    gender: Sequelize.INTEGER,
+    nationality: Sequelize.TEXT,
+    dob: Sequelize.DATE,
+    image_date: Sequelize.DATE
 });
 
 for(var table in tables) {
