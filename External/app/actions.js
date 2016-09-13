@@ -51,7 +51,10 @@ function manage_back(req, res, next) {
 
 // image handling
 function two_pics(req, res, next) {
-    saving('two', req, res).then(function(images) {
+    _create_row().then(function(num) {
+        res.render('result.jade');
+        return saving('two', req, res);
+    }).then(function(images) {
         return compare(images[0][0], images[0][1], images[1]);
     }).then(function(result) {
         res.render('result.jade', result);
@@ -112,6 +115,21 @@ function upload(req, res, next) {
         res.end('Server error');
     });
 };
+
+function _create_row() {
+    return new Promise(function (resolve, reject) {
+        models.comparison.create({
+            completed: false,
+            one: null,
+            two: null,
+            three: null
+        }).then(function (row) {
+            resolve(row.id);
+        }, function(err) {
+            reject(err);
+        });
+    });
+}
 
 exports.two_pics = two_pics;
 exports.all_pics = all_pics;

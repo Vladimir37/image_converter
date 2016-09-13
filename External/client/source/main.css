@@ -7,6 +7,21 @@ canvas {
     border: 1px solid black;
     margin: 5px;
 }
+
+h3 {
+    color: #8C8A8B;
+    text-align: left;
+    margin-left: 10px;
+    font-weight: normal;
+}
+h3.additional {
+    color: #6DA7D6;
+    padding: 5px;
+}
+h3.main-logo {
+    color: white;
+}
+
 .files_upload_field {
     display: block;
 }
@@ -88,6 +103,11 @@ canvas {
 .md-but-menu {
     background: #0643A0 !important;
     border: 1px solid white;
+}
+
+.bottom-grey-ribbon {
+    background: #D7D7D7;
+    text-align: center;
 }
 
 .hidden {

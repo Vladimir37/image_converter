@@ -4,7 +4,7 @@ block scripts
     script(src="/src/result_render.js")
 
 block content
-    section.result.result_many.result_canvas
+    section.result.result_many.result_canvas(ng-controller="result")
         article.logo_panel
             md-grid-list(md-cols="5" md-row-height="60px")
                 md-grid-tile(md-colspan="2")
@@ -18,16 +18,17 @@ block content
                 md-grid-tile(md-colspan="1")
                     md-button(class="md-raised md-primary md-but-menu") Add
                 md-grid-tile(md-colspan="2")
-                    h3 Client logo
+                    h3.main-logo Client logo
                 md-grid-tile(md-colspan="1")
                     md-button(class="md-raised md-primary md-but-menu") Start
                 md-grid-tile(md-colspan="1")
                     md-button(class="md-raised md-primary md-but-menu") Stop
 
         article.main
-            md-grid-list(md-cols="8" md-row-height="400px")
+            md-grid-list(md-cols="8" md-row-height="450px")
                 md-grid-tile(md-colspan="3")
                     md-card(md-theme="default", md-theme-watch='')
+                        h3 REFERENCE
                         md-card-title
                             md-card-title-text
                                 .md-media-lg.card-media
@@ -51,7 +52,13 @@ block content
                                 article.res_descript <50%
                 md-grid-tile(md-colspan="3")
                     md-card(md-theme="default", md-theme-watch='')
+                        h3 CANDIDATE
                         md-card-title
                             md-card-title-text
                                 .md-media-lg.card-media
                                     canvas(width=second.cols height=second.rows data-elem=second.data).second_canv
+            md-grid-list(md-cols="8" md-row-height="200px").bottom-grey-ribbon
+                h3.additional TOP HITS
+                img(src="/src/img/load.gif" alt="load" ng-show="loading")
+                md-grid-tile(md-colspan="1" ng-repeat="img in images")
+                    img(src="data:image/jpg;base64,{{ img.file }}")

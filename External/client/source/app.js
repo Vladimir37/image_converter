@@ -130,3 +130,39 @@ app.controller('index', function($scope, $http) {
         angular.element('#two_but').click();
     };
 });
+app.controller('result', function($scope, $http) {
+    $scope.error = null;
+    $scope.loading = true;
+
+    $http({
+        method: 'GET',
+        url: '/api/images'
+    }).then(function (response) {
+        response = response.data;
+        if (response.status > 0) {
+            console.log(response);
+            $scope.error = 'Server error';
+        }
+        else {
+            var images = response.body;
+            if (images.length > 8) {
+                images = images.slice(0, 8);
+            }
+            if (images.length < 8) {
+                var additional = 8 - images.length;
+                for (var i = 0; i < Math.floor(additional) / 2; i++) {
+                    images.unshift({});
+                    images.push({});
+                }
+                if (additional % 2 != 0) {
+                    images.push({});
+                }
+            }
+            $scope.images = images;
+            $scope.loading = false;
+        }
+    }).catch(function (err) {
+        console.log(err);
+        $scope.error = 'Server error!';
+    });
+});

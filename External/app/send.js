@@ -1,6 +1,7 @@
 var request = require('request');
 var fs = require('fs');
 
+var models = require('./db/models');
 var config = require('../config.json');
 
 function sending(image_one, image_two, clicks) {

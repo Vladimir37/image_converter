@@ -4,6 +4,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var actions = require('./app/actions');
+var api = require('./app/API');
 var config = require('./config');
 var auth = require('./app/db/auth');
 var render = require('./app/render');
@@ -33,6 +34,24 @@ app.post('/login', auth.auth);
 app.post('/two_pics', auth.check, actions.two_pics);
 app.post('/all_pics', auth.check, actions.all_pics);
 app.post('/upload', auth.check, actions.upload);
+
+// API
+app.get('/api/images', auth.check, api.allImages);
+
+app.get('/qw', auth.check, function(req, res, next) {
+    res.render('result.jade', {
+        first: {
+            cols: 172,
+            rows: 304,
+            data: []
+        },
+        second: {
+            cols: 172,
+            rows: 304,
+            data: []
+        }
+    });
+});
 
 app.use('/src', express.static(__dirname + '/client/source'));
 

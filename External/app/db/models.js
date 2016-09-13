@@ -45,6 +45,18 @@ tables.images = sequelize.define('images', {
     dob: Sequelize.DATE
 });
 
+tables.comparison = sequelize.define('comparison', {
+    id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+    },
+    completed: Sequelize.BOOLEAN,
+    one: Sequelize.TEXT,
+    two: Sequelize.TEXT,
+    three: Sequelize.TEXT
+});
+
 for(var table in tables) {
     tables[table].sync().then(function() {
         //success
