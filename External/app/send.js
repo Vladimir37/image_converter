@@ -16,7 +16,10 @@ function sending(image_one, image_two, clicks) {
         };
         form_data.one.file = form_data.one.file.toString('base64');
         form_data.two.file = form_data.two.file.toString('base64');
-        request.post(config.main_server + 'comparison', {form: form_data},
+        request.post(config.main_server + 'comparison', {
+                form: form_data,
+                timeout: 1200000
+            },
             function (error, response, body) {
                 if(error) {
                     console.log(error);

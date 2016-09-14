@@ -51,8 +51,9 @@ tables.comparison = sequelize.define('comparison', {
         primaryKey: true,
         autoIncrement: true
     },
+    user: Sequelize.INTEGER,
     completed: Sequelize.BOOLEAN,
-    one: Sequelize.TEXT,
+    one: Sequelize.TEXT('long'),
     two: Sequelize.TEXT,
     three: Sequelize.TEXT
 });

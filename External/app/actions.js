@@ -51,13 +51,15 @@ function manage_back(req, res, next) {
 
 // image handling
 function two_pics(req, res, next) {
-    _create_row().then(function(num) {
-        res.render('result.jade');
+    var numRow;
+    _create_row(res).then(function(num) {
+        numRow = num;
+        res.render('result.jade', {num});
         return saving('two', req, res);
     }).then(function(images) {
         return compare(images[0][0], images[0][1], images[1]);
     }).then(function(result) {
-        res.render('result.jade', result);
+        _update_row(numRow, 'two', result);
     }).catch(function(err) {
         console.log(err);
         res.end('Server error');
@@ -68,7 +70,12 @@ function all_pics(req, res, next) {
     var user_id = res.user_id;
     var target_file;
     var CliqueCount;
-    saving('all', req, res).then(function(name) {
+    var numRow;
+    _create_row(res).then(function(num) {
+        numRow = num;
+        res.render('result_many.jade', {num});
+        return saving('all', req, res);
+    }).then(function(name) {
         target_file = name[0];
         CliqueCount = name[1];
         return models.images.findAll({
@@ -100,7 +107,8 @@ function all_pics(req, res, next) {
             two: result[1],
             three: result[2]
         };
-        res.render('result_many.jade', first_three);
+        _update_row(numRow, 'all', first_three);
+        //res.render('result_many.jade', first_three);
     }).catch(function(err) {
         console.log(err);
         res.end('Error!');
@@ -116,10 +124,11 @@ function upload(req, res, next) {
     });
 };
 
-function _create_row() {
+function _create_row(res) {
     return new Promise(function (resolve, reject) {
         models.comparison.create({
             completed: false,
+            user: res.user_id,
             one: null,
             two: null,
             three: null
@@ -129,6 +138,40 @@ function _create_row() {
             reject(err);
         });
     });
+}
+
+function _update_row(num, type, data) {
+    // two pics
+    if (type == 'two') {
+        models.comparison.update({
+            completed: true,
+            one: JSON.stringify(data)
+        }, {
+            where: {
+                id: num
+            }
+        }).catch(function(err) {
+            console.log(err);
+        });
+    }
+    // all pics
+    else if (type == 'all') {
+        models.comparison.update({
+            completed: true,
+            one: JSON.stringify(data.one),
+            two: JSON.stringify(data.two),
+            three: JSON.stringify(data.three)
+        }, {
+            where: {
+                id: num
+            }
+        }).catch(function(err) {
+            console.log(err);
+        });
+    }
+    else {
+        console.log('Error!');
+    }
 }
 
 exports.two_pics = two_pics;

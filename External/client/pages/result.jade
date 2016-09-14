@@ -1,7 +1,7 @@
 extends _layout_
 
 block scripts
-    script(src="/src/result_render.js")
+    //script(src="/src/result_render.js")
 
 block content
     section.result.result_many.result_canvas(ng-controller="result")
@@ -25,6 +25,7 @@ block content
                     md-button(class="md-raised md-primary md-but-menu") Stop
 
         article.main
+            input(type="hidden" value=num)#number
             md-grid-list(md-cols="8" md-row-height="450px")
                 md-grid-tile(md-colspan="3")
                     md-card(md-theme="default", md-theme-watch='')
@@ -32,10 +33,10 @@ block content
                         md-card-title
                             md-card-title-text
                                 .md-media-lg.card-media
-                                    canvas(width=first.cols height=first.rows data-elem=first.data).first_canv
+                                    canvas(width=172 height=304).first_canv
                 md-grid-tile(md-colspan="2")
                     md-card(md-theme="default", md-theme-watch='')
-                        md-card-title
+                        md-card-title(ng-show="!processing")
                             md-card-title-text
                                 article.res_circle.res_green
                                 article.delimiter
@@ -50,13 +51,16 @@ block content
                                 article.res_descript >60%
                                 article.delimiter
                                 article.res_descript <50%
+                        md-card-title(ng-show="processing")
+                            b Please, wait...
+                            img(src="/src/img/load.gif" alt="load" ng-show="loading")
                 md-grid-tile(md-colspan="3")
                     md-card(md-theme="default", md-theme-watch='')
                         h3 CANDIDATE
                         md-card-title
                             md-card-title-text
                                 .md-media-lg.card-media
-                                    canvas(width=second.cols height=second.rows data-elem=second.data).second_canv
+                                    canvas(width=172 height=304).second_canv
             md-grid-list(md-cols="8" md-row-height="200px").bottom-grey-ribbon
                 h3.additional TOP HITS
                 img(src="/src/img/load.gif" alt="load" ng-show="loading")
