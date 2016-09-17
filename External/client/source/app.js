@@ -71,7 +71,7 @@ app.controller('manage', function($scope, $http) {
         });
     }
 });
-app.controller('index', function($scope, $http) {
+app.controller('index', function($scope) {
     $scope.image = {};
 
     $scope.upload_click = function () {
@@ -197,42 +197,23 @@ app.controller('result', function($scope, $http) {
                 pixel_num_second++;
             }
         }
+
+        color();
     }
 
-    function minPicsLoad() {
-        $http({
-            method: 'GET',
-            url: '/api/images'
-        }).then(function (response) {
-            response = response.data;
-            if (response.status > 0) {
-                console.log(response);
-                $scope.error = 'Server error';
-            }
-            else {
-                var images = response.body;
-                if (images.length > 8) {
-                    images = images.slice(0, 8);
-                }
-                if (images.length < 8) {
-                    var additional = 8 - images.length;
-                    for (var i = 0; i < Math.floor(additional) / 2; i++) {
-                        images.unshift({});
-                        images.push({});
-                    }
-                    if (additional % 2 != 0) {
-                        images.push({});
-                    }
-                }
-                $scope.images = images;
-                $scope.loading = false;
-            }
-        }).catch(function (err) {
-            console.log(err);
-            $scope.error = 'Server error!';
-        });
+    function color () {
+        var count = $scope.data.number;
+        var indicator = $('div.indicator');
+        if (count > 1200) {
+            indicator.addClass('res_green');
+        }
+        else if (count > 500) {
+            indicator.addClass('res_amber');
+        }
+        else {
+            indicator.addClass('res_red');
+        }
     }
-    minPicsLoad();
 });
 app.controller('result_many', function($scope, $http) {
     $scope.number = document.getElementById('number').value;

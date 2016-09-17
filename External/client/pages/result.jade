@@ -31,7 +31,7 @@ block content
                     md-card(md-theme="default", md-theme-watch='')
                         h3 REFERENCE
                         md-card-title
-                            md-card-title-text
+                            md-card-title-text.img_container
                                 .md-media-lg.card-media
                                     canvas(width=172 height=304).first_canv
                 md-grid-tile(md-colspan="2")
@@ -55,14 +55,10 @@ block content
                             b Please, wait...
                             //img(src="/src/img/load.gif" alt="load" ng-show="loading")
                 md-grid-tile(md-colspan="3")
-                    md-card(md-theme="default", md-theme-watch='')
+                    md-card(md-theme="default", md-theme-watch='').img_container
+                        div.indicator
                         h3 CANDIDATE
                         md-card-title
                             md-card-title-text
                                 .md-media-lg.card-media
                                     canvas(width=172 height=304).second_canv
-            md-grid-list(md-cols="8" md-row-height="100px").bottom-grey-ribbon
-                h3.additional TOP HITS
-                img(src="/src/img/load.gif" alt="load" ng-show="loading")
-                md-grid-tile(md-colspan="1" ng-repeat="img in images")
-                    img(src="data:image/jpg;base64,{{ img.file }}")
