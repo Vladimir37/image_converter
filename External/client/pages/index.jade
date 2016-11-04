@@ -30,7 +30,7 @@ block content
         md-card(md-theme="default", md-theme-watch='')
             md-card-title
                 md-card-title-text
-                    h2 Compare two pics
+                    h2 Compare two images
                     form(action="/two_pics" method="POST" enctype="multipart/form-data")
                         md-button(class="md-raised md-default" ng-click="upload_compare_one()") {{ value_compare_one }}
                         input(type="file" id="one_but" class="hidden" name="one" required)
@@ -44,7 +44,7 @@ block content
             md-card-title
                 md-card-title-text
                     form(action="/all_pics" method="POST" enctype="multipart/form-data")
-                        h2 Compare all pics
+                        h2 Compare image with Gallery
                         md-button(class="md-raised md-default" ng-click="upload_all()") {{ value_all }}
                         input(type="file" id="all_but" class="hidden" name="one" required)
                         br
@@ -54,7 +54,7 @@ block content
             md-card-title
                 md-card-title-text
                     form(action="/upload" method="POST" enctype="multipart/form-data" id="upload_form")
-                        h2 Upload image
+                        h2 Upload Image to Gallery
                         article.alert(ng-if="error") {{ error }}
                         md-button(class="md-raised md-default" ng-click="upload_image()") {{ value_upload }}
                         article.hidden

@@ -112,6 +112,12 @@ h3.main-logo {
     color: #424242;
 }
 
+.loading {
+    width: 64px !important;
+    height: 64px !important;
+    margin: 15px auto;;
+}
+
 .md-but-menu {
     background: #0643A0 !important;
     border: 1px solid white;

@@ -14,15 +14,20 @@ block content
         article.top_panel
             md-grid-list(md-cols="6" md-row-height="50px")
                 md-grid-tile(md-colspan="1")
-                    md-button(class="md-raised md-primary md-but-menu") Capture
+                    a(href='/')
+                        md-button(class="md-raised md-primary md-but-menu") Index
                 md-grid-tile(md-colspan="1")
-                    md-button(class="md-raised md-primary md-but-menu") Add
+                    a(href='/gallery')
+                        md-button(class="md-raised md-primary md-but-menu") Gallery
                 md-grid-tile(md-colspan="2")
                     h3.main-logo Client logo
                 md-grid-tile(md-colspan="1")
-                    md-button(class="md-raised md-primary md-but-menu") Start
+                    - if(user_status)
+                        a(href='/manage')
+                            md-button(class="md-raised md-primary md-but-menu") Manage
                 md-grid-tile(md-colspan="1")
-                    md-button(class="md-raised md-primary md-but-menu") Stop
+                    a(href='/exit')
+                        md-button(class="md-raised md-primary md-but-menu") Logout
 
         article.main
             input(type="hidden" value=num)#number
@@ -52,8 +57,9 @@ block content
                                 article.delimiter
                                 article.res_descript <50%
                         md-card-title(ng-show="processing")
-                            b Please, wait...
-                            //img(src="/src/img/load.gif" alt="load" ng-show="loading")
+                            div
+                                b Please, wait...
+                                img(src="/src/img/preload.gif" alt="load" ng-show="loading").loading
                 md-grid-tile(md-colspan="3")
                     md-card(md-theme="default", md-theme-watch='').img_container
                         div.indicator

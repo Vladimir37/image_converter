@@ -2,6 +2,6 @@
     "database": "comparison",
     "name": "root",
     "pass": "node_db",
-    "dialect": "mysql",
+    "dialect": "mariadb",
     "host": "localhost"
 }
