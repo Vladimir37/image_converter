@@ -38,5 +38,21 @@ function CheckComparison(req, res, next) {
     });
 }
 
+function checkPhoto(req, res, next) {
+    var num = req.body.num;
+    models.images.findById(num).then(function (data) {
+        res.end(JSON.stringify({
+            status: 0,
+            body: data
+        }));
+    }).catch(function (err) {
+        console.log(err);
+        res.end(JSON.stringify({
+            status: 1
+        }));
+    })
+}
+
 exports.allImages = AllImages;
 exports.checkComparison = CheckComparison;
+exports.checkPhoto = checkPhoto;

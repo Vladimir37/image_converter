@@ -238,7 +238,7 @@ app.controller('result_many', function($scope, $http) {
                     two: JSON.parse(response.body.two),
                     three: JSON.parse(response.body.three)
                 };
-                console.log($scope.data);
+                renderPhotoData();
                 clearInterval($scope.checking);
                 rendering();
             }
@@ -246,6 +246,36 @@ app.controller('result_many', function($scope, $http) {
                 $scope.error = 'Server error';
             }
         })
+    }
+
+    function renderPhotoData() {
+        var first = $scope.data.one.second.id;
+        var second = $scope.data.two.second.id;
+        var third = $scope.data.three.second.id;
+        var imgs = [first, second, third];
+
+        var imgs_res = [];
+
+        imgs.forEach(function (id) {
+                imgs_res.push($http({
+                method: 'GET',
+                url: '/api/photo_data',
+                params: {num: id}
+            }));
+        });
+
+        Promise.all(imgs_res).then(function (data) {
+            $('#first-card').html(_generateData(data[0]));
+            $('#second-card').html(_generateData(data[1]));
+            $('#third-card').html(_generateData(data[2]));
+        });
+
+        function _generateData (data) {
+            return "<p><b>Name: </b>" + data.name + "</p><br>" +
+            "<p><b>Gender: </b>" + data.gender == 0 ? "Male" : "Female" + "</p><br>" +
+            "<p><b>Nationality: </b>" + data.nationality + "</p><br>" +
+            "<p><b>D. O. B.: </b>" + data.dob + "</p><br>";
+        }
     }
 
     function rendering() {

@@ -38,6 +38,7 @@ app.post('/upload', auth.check, actions.upload);
 // API
 app.get('/api/images', auth.check, api.allImages);
 app.get('/api/check', auth.check, api.checkComparison);
+app.get('/api/photo_data', auth.check, api.checkPhoto);
 
 app.get('/qw', auth.check, function(req, res, next) {
     res.render('result.jade', {
