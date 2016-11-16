@@ -324,7 +324,7 @@ app.controller('result_many', function($scope, $http) {
                     }
                 }
                 $scope.images = images;
-                $scope.loading = false;
+                //$scope.loading = false;
             }
         }).catch(function (err) {
             console.log(err);

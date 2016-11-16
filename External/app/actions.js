@@ -57,7 +57,7 @@ function two_pics(req, res, next) {
         res.render('result.jade', {num});
         return saving('two', req, res);
     }).then(function(images) {
-        return compare(images[0][0], images[0][1], images[1]);
+        return compare(images[0][0], images[0][1], null, null, images[1]);
     }).then(function(result) {
         _update_row(numRow, 'two', result);
     }).catch(function(err) {

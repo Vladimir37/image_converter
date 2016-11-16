@@ -4,7 +4,7 @@ var fs = require('fs');
 var models = require('./db/models');
 var config = require('../config.json');
 
-function sending(image_one, image_two, clicks) {
+function sending(image_one, image_two, id_one, id_two, clicks) {
     // Standard clicks
     clicks = 100;
     // Standard clicks
@@ -12,6 +12,8 @@ function sending(image_one, image_two, clicks) {
         var form_data = {
             one: image_one,
             two: image_two,
+            id_one: id_one,
+            id_two: id_two,
             clicks: clicks
         };
         form_data.one.file = form_data.one.file.toString('base64');

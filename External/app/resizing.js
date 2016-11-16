@@ -7,6 +7,7 @@ var config = require('../config');
 function resizing(data) {
     return new Promise(function(resolve, reject) {
         var resize_options = {
+            id: data.id,
             srcData: new Buffer(data.file, 'base64'),
             width: config.width,
             height: config.height
@@ -18,6 +19,7 @@ function resizing(data) {
             }
             else {
                 var image_data = {
+                    id: data.id,
                     width: config.width,
                     height: config.height,
                     file: new Buffer(stdout, 'binary')
