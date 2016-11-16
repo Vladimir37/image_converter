@@ -238,6 +238,7 @@ app.controller('result_many', function($scope, $http) {
                     two: JSON.parse(response.body.two),
                     three: JSON.parse(response.body.three)
                 };
+                console.log($scope.data);
                 clearInterval($scope.checking);
                 rendering();
             }
