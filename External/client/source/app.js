@@ -272,6 +272,7 @@ app.controller('result_many', function($scope, $http) {
 
         function _generateData (data) {
             data = data.body;
+            console.log(data);
             var gender;
             if (isNaN(data.gender)) {
                 gender = data.gender;
