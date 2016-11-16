@@ -269,10 +269,13 @@ app.controller('result_many', function($scope, $http) {
             $('#second-card').html(_generateData(data[1]));
             $('#third-card').html(_generateData(data[2]));
         });
+        var i = 0;
 
         function _generateData (data) {
-            data = data.body;
+            i++;
+            console.log(i);
             console.log(data);
+            data = data.body;
             var gender;
             if (isNaN(data.gender)) {
                 gender = data.gender;
