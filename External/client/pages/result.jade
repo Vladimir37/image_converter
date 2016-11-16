@@ -51,11 +51,11 @@ block content
                             md-card-title-text
                                 article(style="width: 20px")
                             md-card-title-text
-                                article.res_descript >90%
+                                article.res_descript Match
                                 article.delimiter
-                                article.res_descript >60%
+                                article.res_descript Partial match
                                 article.delimiter
-                                article.res_descript <50%
+                                article.res_descript No match
                         md-card-title(ng-show="processing")
                             div
                                 b Please, wait...
@@ -68,3 +68,7 @@ block content
                             md-card-title-text
                                 .md-media-lg.card-media
                                     canvas(width=172 height=304).second_canv
+                                .md-media-lg.card-media
+                                    p Test
+                                    p Test
+                                    p Test

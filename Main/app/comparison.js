@@ -3,6 +3,8 @@ var compare = require('./processing');
 function comparison(req, res, next) {
     var image_one = req.body.one;
     var image_two = req.body.two;
+    var id_one = req.body.id_one;
+    var id_two = req.body.id_two;
     var clicks = req.body.clicks;
     image_one.file = new Buffer(image_one.file, 'base64');
     image_two.file = new Buffer(image_two.file, 'base64');
@@ -13,6 +15,7 @@ function comparison(req, res, next) {
     compare(image_one, image_two, clicks).then(function(result) {
         response.status = 0;
         response.body = result;
+        console.log(result);
         res.end(JSON.stringify(response));
     }).catch(function(err) {
         console.log(err);

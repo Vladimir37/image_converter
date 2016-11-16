@@ -55,7 +55,10 @@ tables.comparison = sequelize.define('comparison', {
     completed: Sequelize.BOOLEAN,
     one: Sequelize.TEXT('long'),
     two: Sequelize.TEXT('long'),
-    three: Sequelize.TEXT('long')
+    three: Sequelize.TEXT('long'),
+    oneId: Sequelize.INTEGER,
+    twoId: Sequelize.INTEGER,
+    threeId: Sequelize.INTEGER
 });
 
 for(var table in tables) {

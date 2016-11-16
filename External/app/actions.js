@@ -108,7 +108,6 @@ function all_pics(req, res, next) {
             three: result[2]
         };
         _update_row(numRow, 'all', first_three);
-        //res.render('result_many.jade', first_three);
     }).catch(function(err) {
         console.log(err);
         res.end('Error!');
