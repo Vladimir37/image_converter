@@ -110,6 +110,6 @@ block content
                             .md-media-lg.card-media.data-card#third-card 
         md-grid-list(md-cols="8" md-row-height="100px").bottom-grey-ribbon
             h3.additional TOP HITS
-            img(src="/src/img/load.gif" alt="load" ng-show="loading")
+            img(src="/src/img/load.gif" alt="load" ng-show="loading_img")
             md-grid-tile(md-colspan="1" ng-repeat="img in images")
                 img(src="data:image/jpg;base64,{{ img.file }}")

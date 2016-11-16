@@ -271,10 +271,16 @@ app.controller('result_many', function($scope, $http) {
         });
 
         function _generateData (data) {
+            var gender;
+            if (isNaN(data.gender)) {
+                gender = data.gender;
+            } else {
+                gender = data.gender == 0 ? "Male" : "Female";
+            }
             return "<p><b>Name: </b>" + data.name + "</p><br>" +
-            "<p><b>Gender: </b>" + data.gender == 0 ? "Male" : "Female" + "</p><br>" +
+            "<p><b>Gender: </b>" + gender + "</p><br>" +
             "<p><b>Nationality: </b>" + data.nationality + "</p><br>" +
-            "<p><b>D. O. B.: </b>" + data.dob + "</p><br>";
+            "<p><b>D. O. B.: </b>" + image.dob.toString().slice(0, -23) + "</p><br>";
         }
     }
 
@@ -330,6 +336,7 @@ app.controller('result_many', function($scope, $http) {
     }
 
     function minPicsLoad() {
+        $scope.loading_img = true;
         $http({
             method: 'GET',
             url: '/api/images'
@@ -355,7 +362,7 @@ app.controller('result_many', function($scope, $http) {
                     }
                 }
                 $scope.images = images;
-                //$scope.loading = false;
+                $scope.loading_img = false;
             }
         }).catch(function (err) {
             console.log(err);
