@@ -281,7 +281,7 @@ app.controller('result_many', function($scope, $http) {
             return "<p><b>Name: </b>" + data.name + "</p><br>" +
             "<p><b>Gender: </b>" + gender + "</p><br>" +
             "<p><b>Nationality: </b>" + data.nationality + "</p><br>" +
-            "<p><b>D. O. B.: </b>" + data.dob.toString().slice(0, -23) + "</p><br>";
+            "<p><b>D. O. B.: </b>" + data.dob.toString().slice(0, -14) + "</p><br>";
         }
     }
 
