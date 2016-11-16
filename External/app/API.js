@@ -39,7 +39,7 @@ function CheckComparison(req, res, next) {
 }
 
 function checkPhoto(req, res, next) {
-    var num = req.body.num;
+    var num = req.query.num;
     models.images.findById(num).then(function (data) {
         res.end(JSON.stringify({
             status: 0,
