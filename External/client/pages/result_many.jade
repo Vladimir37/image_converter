@@ -40,7 +40,7 @@ block content
                                 .md-media-lg.card-media
                                     canvas(width=172 height=304).first_canv
                                     //canvas().first_canv
-                md-grid-tile(md-colspan="2")
+                md-grid-tile(md-colspan="2").center-panel
                     md-card(md-theme="default", md-theme-watch='')
                         md-card-title(ng-show="!processing")
                             md-card-title-text
@@ -62,7 +62,7 @@ block content
                                 b Please, wait...
                                 img(src="/src/img/preload.gif" alt="load" ng-show="loading").loading
                 md-grid-tile(md-colspan="3")
-                    md-card(md-theme="default", md-theme-watch='')
+                    md-card(md-theme="default", md-theme-watch='').data-container
                         h3 CANDIDATE
                         md-card-title
                             md-card-title-text
@@ -81,7 +81,7 @@ block content
                                 //canvas().first_canv
             md-grid-tile(md-colspan="2")
             md-grid-tile(md-colspan="3")
-                md-card(md-theme="default", md-theme-watch='')
+                md-card(md-theme="default", md-theme-watch='').data-container
                     h3 CANDIDATE
                     md-card-title
                         md-card-title-text
@@ -100,7 +100,7 @@ block content
                                 //canvas().first_canv
             md-grid-tile(md-colspan="2")
             md-grid-tile(md-colspan="3")
-                md-card(md-theme="default", md-theme-watch='')
+                md-card(md-theme="default", md-theme-watch='').data-container
                     h3 CANDIDATE
                     md-card-title
                         md-card-title-text
@@ -112,4 +112,4 @@ block content
             h3.additional TOP HITS
             img(src="/src/img/load.gif" alt="load" ng-show="loading_img")
             md-grid-tile(md-colspan="1" ng-repeat="img in images")
-                img(src="data:image/jpg;base64,{{ img.file }}")
+                img(src="data:image/jpg;base64,{{ img.file }}").top-hit-img

@@ -147,6 +147,19 @@ h3.main-logo {
     opacity: 0.9;
 }
 
+.data-container {
+    position: relative;
+}
+
+.top-hit-img {
+    max-width: 43px;
+    max-height: 76px;
+}
+
+.center-panel {
+    position: fixed;
+}
+
 .hidden {
     display: none;
 }
