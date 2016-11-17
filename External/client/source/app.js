@@ -207,7 +207,7 @@ app.controller('result', function($scope, $http) {
         if (count > 1200) {
             indicator.addClass('res_green');
         }
-        else if (count > 500) {
+        else if (count > 400) {
             indicator.addClass('res_amber');
         }
         else {
@@ -249,7 +249,6 @@ app.controller('result_many', function($scope, $http) {
     }
 
     function renderPhotoData() {
-        console.log($scope.data);
         var first = $scope.data.one.second.id;
         var second = $scope.data.two.second.id;
         var third = $scope.data.three.second.id;
@@ -269,6 +268,10 @@ app.controller('result_many', function($scope, $http) {
             $('#first-card').html(_generateData(data[0]));
             $('#second-card').html(_generateData(data[1]));
             $('#third-card').html(_generateData(data[2]));
+
+            color('first', $scope.data.one.number);
+            color('second', $scope.data.two.number);
+            color('third', $scope.data.three.number);
         });
 
         function _generateData (data) {
@@ -283,6 +286,19 @@ app.controller('result_many', function($scope, $http) {
             "<p><b>Gender: </b>" + gender + "</p><br>" +
             "<p><b>Nationality: </b>" + data.nationality + "</p><br>" +
             "<p><b>D. O. B.: </b>" + data.dob.toString().slice(0, -14) + "</p><br>";
+        }
+
+        function color (target, count) {
+            var indicator = $('div.indicator-' + target);
+            if (count > 1200) {
+                indicator.addClass('res_green');
+            }
+            else if (count > 400) {
+                indicator.addClass('res_amber');
+            }
+            else {
+                indicator.addClass('res_red');
+            }
         }
     }
 

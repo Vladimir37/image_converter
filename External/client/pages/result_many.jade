@@ -63,6 +63,7 @@ block content
                                 img(src="/src/img/preload.gif" alt="load" ng-show="loading").loading
                 md-grid-tile(md-colspan="3")
                     md-card(md-theme="default", md-theme-watch='').data-container
+                        div.indicator.indicator-first
                         h3 CANDIDATE
                         md-card-title
                             md-card-title-text
@@ -82,6 +83,7 @@ block content
             md-grid-tile(md-colspan="2")
             md-grid-tile(md-colspan="3")
                 md-card(md-theme="default", md-theme-watch='').data-container
+                    div.indicator.indicator-second
                     h3 CANDIDATE
                     md-card-title
                         md-card-title-text
@@ -101,6 +103,7 @@ block content
             md-grid-tile(md-colspan="2")
             md-grid-tile(md-colspan="3")
                 md-card(md-theme="default", md-theme-watch='').data-container
+                    div.indicator.indicator-third
                     h3 CANDIDATE
                     md-card-title
                         md-card-title-text
@@ -108,8 +111,9 @@ block content
                                 canvas(width=172 height=304).second_canv
                                 //canvas().second_canv
                             .md-media-lg.card-media.data-card#third-card 
-        md-grid-list(md-cols="8" md-row-height="100px").bottom-grey-ribbon
+        div.bottom-grey-ribbon
             h3.additional TOP HITS
             img(src="/src/img/load.gif" alt="load" ng-show="loading_img")
-            md-grid-tile(md-colspan="1" ng-repeat="img in images")
-                img(src="data:image/jpg;base64,{{ img.file }}").top-hit-img
+            md-grid-list(md-cols="8" md-row-height="100px")
+                md-grid-tile(md-colspan="1" ng-repeat="img in images")
+                    img(src="data:image/jpg;base64,{{ img.file }}").top-hit-img
