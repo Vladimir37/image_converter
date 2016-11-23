@@ -269,9 +269,11 @@ app.controller('result_many', function($scope, $http) {
             $('#second-card').html(_generateData(data[1]));
             $('#third-card').html(_generateData(data[2]));
 
-            color('first', $scope.data.one.number);
-            color('second', $scope.data.two.number);
-            color('third', $scope.data.three.number);
+            var D = calculateD($scope.data.one.number, $scope.data.two.number, $scope.data.three.number);
+
+            color('first', $scope.data.one.number, D);
+            color('second', $scope.data.two.number, D);
+            color('third', $scope.data.three.number, D);
         });
 
         function _generateData (data) {
@@ -288,17 +290,26 @@ app.controller('result_many', function($scope, $http) {
             "<p><b>D. O. B.: </b>" + data.dob.toString().slice(0, -14) + "</p><br>";
         }
 
-        function color (target, count) {
+        function color (target, count, D) {
             var indicator = $('div.indicator-' + target);
             if (count > 1200) {
                 indicator.addClass('res_green');
             }
-            else if (count > 400) {
+            else if (count > 400 && D > 20) {
                 indicator.addClass('res_amber');
             }
             else {
                 indicator.addClass('res_red');
             }
+        }
+
+        function calculateD (one, two, three) {
+            var allArr = [one, two, three];
+            var maxElem = Math.max(one, two, three);
+            allArr.splice(allArr.indexOf(maxElem), 1);
+            var secondElem = Math.max(allArr[0], allArr[1]);
+            var D = 100 * (maxElem - secondElem) / maxElem;
+            return D;
         }
     }
 
