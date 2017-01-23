@@ -276,15 +276,15 @@ app.controller('result_many', function($scope, $http) {
             color('third', $scope.data.three.number, D);
         });
 
-        function _generateData (data) {
-            data = data.data.body;
+        function _generateData (raw_data) {
+            data = raw_data.data.body;
             var gender;
             if (isNaN(data.gender)) {
                 gender = data.gender;
             } else {
                 gender = data.gender == 0 ? "Male" : "Female";
             }
-            console.log(data);
+            console.log(raw_data);
             return "<p><b>Name: </b>" + data.name + "</p><br>" +
             "<p><b>Gender: </b>" + gender + "</p><br>" +
             "<p><b>Nationality: </b>" + data.nationality + "</p><br>" +
