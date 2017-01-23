@@ -265,9 +265,9 @@ app.controller('result_many', function($scope, $http) {
         });
 
         Promise.all(imgs_res).then(function (data) {
-            $('#first-card').html(_generateData(data[0]));
-            $('#second-card').html(_generateData(data[1]));
-            $('#third-card').html(_generateData(data[2]));
+            $('#first-card').html(_generateData(data[0], 'one'));
+            $('#second-card').html(_generateData(data[1], 'two'));
+            $('#third-card').html(_generateData(data[2], 'three'));
 
             var D = calculateD($scope.data.one.number, $scope.data.two.number, $scope.data.three.number);
 
@@ -276,7 +276,7 @@ app.controller('result_many', function($scope, $http) {
             color('third', $scope.data.three.number, D);
         });
 
-        function _generateData (raw_data) {
+        function _generateData (raw_data, num) {
             data = raw_data.data.body;
             var gender;
             if (isNaN(data.gender)) {
@@ -289,7 +289,7 @@ app.controller('result_many', function($scope, $http) {
             "<p><b>Gender: </b>" + gender + "</p><br>" +
             "<p><b>Nationality: </b>" + data.nationality + "</p><br>" +
             "<p><b>D. O. B.: </b>" + data.dob.toString().slice(0, -14) + "</p><br>" +
-            "<p><b>Count: </b>" + $scope.data.one.number + "</p><br>";
+            "<p><b>Count: </b>" + $scope.data[num].number + "</p><br>";
         }
 
         function color (target, count, D) {
