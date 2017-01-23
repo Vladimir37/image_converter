@@ -8,4 +8,5 @@ function restart () {
     });
 }
 
-setInterval(restart, 86400000);
+// setInterval(restart, 86400000);
+restart()
