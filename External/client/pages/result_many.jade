@@ -40,7 +40,6 @@ block content
                                 .md-media-lg.card-media
                                     canvas(width=172 height=304).first_canv
                                     //canvas().first_canv
-                                .md-media-lg.card-media.data-card#first-card-ref
                 md-grid-tile(md-colspan="2").center-panel
                     md-card(md-theme="default", md-theme-watch='')
                         md-card-title(ng-show="!processing")
@@ -71,7 +70,7 @@ block content
                                 .md-media-lg.card-media
                                     canvas(width=172 height=304).second_canv
                                     //canvas().second_canv
-                                //- .md-media-lg.card-media.data-card#first-card
+                                .md-media-lg.card-media.data-card#first-card
         md-grid-list(md-cols="8" md-row-height="450px").result_canvas
             md-grid-tile(md-colspan="3")
                 md-card(md-theme="default", md-theme-watch='')
@@ -81,7 +80,6 @@ block content
                             .md-media-lg.card-media
                                 canvas(width=172 height=304).first_canv
                                 //canvas().first_canv
-                            .md-media-lg.card-media.data-card#second-card-ref
             md-grid-tile(md-colspan="2")
             md-grid-tile(md-colspan="3")
                 md-card(md-theme="default", md-theme-watch='').data-container
@@ -92,7 +90,7 @@ block content
                             .md-media-lg.card-media
                                 canvas(width=172 height=304).second_canv
                                 //canvas().second_canv
-                            //- .md-media-lg.card-media.data-card#second-card
+                            .md-media-lg.card-media.data-card#second-card
         md-grid-list(md-cols="8" md-row-height="450px").result_canvas
             md-grid-tile(md-colspan="3")
                 md-card(md-theme="default", md-theme-watch='')
@@ -102,7 +100,6 @@ block content
                             .md-media-lg.card-media
                                 canvas(width=172 height=304).first_canv
                                 //canvas().first_canv
-                            .md-media-lg.card-media.data-card#third-card-ref
             md-grid-tile(md-colspan="2")
             md-grid-tile(md-colspan="3")
                 md-card(md-theme="default", md-theme-watch='').data-container
@@ -113,7 +110,7 @@ block content
                             .md-media-lg.card-media
                                 canvas(width=172 height=304).second_canv
                                 //canvas().second_canv
-                            //- .md-media-lg.card-media.data-card#third-card 
+                            .md-media-lg.card-media.data-card#third-card 
         div.bottom-grey-ribbon
             h3.additional TOP HITS
             img(src="/src/img/load.gif" alt="load" ng-show="loading_img")
