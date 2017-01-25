@@ -265,9 +265,9 @@ app.controller('result_many', function($scope, $http) {
         });
 
         Promise.all(imgs_res).then(function (data) {
-            $('#first-card').html(_generateData(data[0], 'one'));
-            $('#second-card').html(_generateData(data[1], 'two'));
-            $('#third-card').html(_generateData(data[2], 'three'));
+            $('#first-card-ref').html(_generateData(data[0], 'one'));
+            $('#second-card-ref').html(_generateData(data[1], 'two'));
+            $('#third-card-ref').html(_generateData(data[2], 'three'));
 
             var D = calculateD($scope.data.one.number, $scope.data.two.number, $scope.data.three.number);
 
@@ -284,7 +284,6 @@ app.controller('result_many', function($scope, $http) {
             } else {
                 gender = data.gender == 0 ? "Male" : "Female";
             }
-            console.log(raw_data);
             return "<p><b>Name: </b>" + data.name + "</p><br>" +
             "<p><b>Gender: </b>" + gender + "</p><br>" +
             "<p><b>Nationality: </b>" + data.nationality + "</p><br>" +
@@ -330,7 +329,7 @@ app.controller('result_many', function($scope, $http) {
                 break;
             }
 
-            var sausage_first = $scope.data[numbers[canv_num]].first.data;
+            var sausage_first = $scope.data[numbers[canv_num]].second.data;
             var width_first = canvas_first.width;
             var height_first = canvas_first.height;
 
@@ -347,7 +346,7 @@ app.controller('result_many', function($scope, $http) {
                 }
             }
             // ----
-            var sausage_second = $scope.data[numbers[canv_num]].second.data;
+            var sausage_second = $scope.data[numbers[canv_num]].first.data;
             var width_second = canvas_second.width;
             var height_second = canvas_second.height;
 
