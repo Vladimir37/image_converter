@@ -329,7 +329,7 @@ app.controller('result_many', function($scope, $http) {
                 break;
             }
 
-            var sausage_first = $scope.data[numbers[canv_num]].first.data;
+            var sausage_first = $scope.data[numbers[canv_num]].second.data;
             var width_first = canvas_first.width;
             var height_first = canvas_first.height;
 
@@ -346,7 +346,7 @@ app.controller('result_many', function($scope, $http) {
                 }
             }
             // ----
-            var sausage_second = $scope.data[numbers[canv_num]].second.data;
+            var sausage_second = $scope.data[numbers[canv_num]].first.data;
             var width_second = canvas_second.width;
             var height_second = canvas_second.height;
 
