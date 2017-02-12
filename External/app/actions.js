@@ -132,7 +132,9 @@ function _create_row(res) {
             user: res.user_id,
             one: null,
             two: null,
-            three: null
+            three: null,
+            fourth: null,
+            fift: null
         }).then(function (row) {
             resolve(row.id);
         }, function(err) {
@@ -161,7 +163,9 @@ function _update_row(num, type, data) {
             completed: true,
             one: JSON.stringify(data.one),
             two: JSON.stringify(data.two),
-            three: JSON.stringify(data.three)
+            three: JSON.stringify(data.three),
+            fourth: JSON.stringify(data.fourth),
+            fift: JSON.stringify(data.fift)
         }, {
             where: {
                 id: num
