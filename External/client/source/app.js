@@ -252,7 +252,9 @@ app.controller('result_many', function($scope, $http) {
         var first = $scope.data.one.second.id;
         var second = $scope.data.two.second.id;
         var third = $scope.data.three.second.id;
-        var imgs = [first, second, third];
+        var fourth = $scope.data.fourth.second.id;
+        var fift = $scope.data.fift.second.id;
+        var imgs = [first, second, third, fourth, fift];
 
         var imgs_res = [];
 
@@ -265,6 +267,7 @@ app.controller('result_many', function($scope, $http) {
         });
 
         Promise.all(imgs_res).then(function (data) {
+            console.log(data);
             $('#first-card').html(_generateData(data[0], 'one'));
             $('#second-card').html(_generateData(data[1], 'two'));
             $('#third-card').html(_generateData(data[2], 'three'));
