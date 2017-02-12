@@ -268,6 +268,8 @@ app.controller('result_many', function($scope, $http) {
             $('#first-card').html(_generateData(data[0], 'one'));
             $('#second-card').html(_generateData(data[1], 'two'));
             $('#third-card').html(_generateData(data[2], 'three'));
+            $('#fourth-card').html(_generateData(data[3], 'fourth'));
+            $('#fift-card').html(_generateData(data[4], 'fift'));
 
             var D = calculateD($scope.data.one.number, $scope.data.two.number, $scope.data.three.number);
 

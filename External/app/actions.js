@@ -102,12 +102,14 @@ function all_pics(req, res, next) {
         result.forEach(function(item) {
             console.log(item.number);
         });
-        var first_three = {
+        var first_results = {
             one: result[0],
             two: result[1],
-            three: result[2]
+            three: result[2],
+            four: result[3],
+            five: result[4]
         };
-        _update_row(numRow, 'all', first_three);
+        _update_row(numRow, 'all', first_results);
     }).catch(function(err) {
         console.log(err);
         res.end('Error!');
