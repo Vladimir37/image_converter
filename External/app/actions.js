@@ -106,8 +106,8 @@ function all_pics(req, res, next) {
             one: result[0],
             two: result[1],
             three: result[2],
-            four: result[3],
-            five: result[4]
+            fourth: result[3],
+            fift: result[4]
         };
         _update_row(numRow, 'all', first_results);
     }).catch(function(err) {
@@ -163,7 +163,7 @@ function _update_row(num, type, data) {
             completed: true,
             one: JSON.stringify(data.one),
             two: JSON.stringify(data.two),
-            three: JSON.stringify(data.three),
+            three: JSON.stringify(data.three),//
             fourth: JSON.stringify(data.fourth),
             fift: JSON.stringify(data.fift)
         }, {
