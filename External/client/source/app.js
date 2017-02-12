@@ -231,14 +231,15 @@ app.controller('result_many', function($scope, $http) {
             params: {num: $scope.number}
         }).then(function (response) {
             response = response.data;
+            console.log(response.body);
             if (response.status == 0) {
                 $scope.processing = false;
                 $scope.data = {
                     one: JSON.parse(response.body.one),
                     two: JSON.parse(response.body.two),
                     three: JSON.parse(response.body.three),
-                    fourth: JSON.parse(response.body.fourth),
-                    fift: JSON.parse(response.body.fift)
+                    // fourth: JSON.parse(response.body.fourth),
+                    // fift: JSON.parse(response.body.fift)
                 };
                 renderPhotoData();
                 clearInterval($scope.checking);
