@@ -242,17 +242,17 @@ app.controller('result_many', function($scope, $http) {
                 // three: JSON.parse(response.body.three),
                 // fourth: JSON.parse(response.body.fourth),
                 // fift: JSON.parse(response.body.fift)
-                if ($scope.data.three) {
+                if (response.body.three) {
                     $scope.data.three = JSON.parse(response.body.three);
                     $('.main_block_three').removeClass('hidden');
                     $scope.fullLength++;
                 }
-                if ($scope.data.fourth) {
+                if (response.body.fourth) {
                     $scope.data.fourth = JSON.parse(response.body.fourth);
                     $('.main_block_fourth').removeClass('hidden');
                     $scope.fullLength++;
                 }
-                if ($scope.data.fift) {
+                if (response.body.fift) {
                     $scope.data.fift = JSON.parse(response.body.fift);
                     $('.main_block_fift').removeClass('hidden');
                     $scope.fullLength++;
@@ -273,10 +273,10 @@ app.controller('result_many', function($scope, $http) {
         if ($scope.fullLength > 2) {
             var third = $scope.data.three.second.id;
         }
-        if ($scope.fullLength > 2) {
+        if ($scope.fullLength > 3) {
             var fourth = $scope.data.fourth.second.id;
         }
-        if ($scope.fullLength > 2) {
+        if ($scope.fullLength > 4) {
             var fift = $scope.data.fift.second.id;
         }
         var imgs = [first, second, third, fourth, fift];
