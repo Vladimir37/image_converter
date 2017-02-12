@@ -242,17 +242,17 @@ app.controller('result_many', function($scope, $http) {
                 // three: JSON.parse(response.body.three),
                 // fourth: JSON.parse(response.body.fourth),
                 // fift: JSON.parse(response.body.fift)
-                if (response.body.three) {
+                if ($scope.data.three) {
                     $scope.data.three = JSON.parse(response.body.three);
                     $('.main_block_three').removeClass('hidden');
                     $scope.fullLength++;
                 }
-                if (response.body.fourth) {
+                if ($scope.data.fourth) {
                     $scope.data.fourth = JSON.parse(response.body.fourth);
                     $('.main_block_fourth').removeClass('hidden');
                     $scope.fullLength++;
                 }
-                if (response.body.fift) {
+                if ($scope.data.fift) {
                     $scope.data.fift = JSON.parse(response.body.fift);
                     $('.main_block_fift').removeClass('hidden');
                     $scope.fullLength++;
