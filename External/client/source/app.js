@@ -270,9 +270,15 @@ app.controller('result_many', function($scope, $http) {
     function renderPhotoData() {
         var first = $scope.data.one.second.id;
         var second = $scope.data.two.second.id;
-        var third = $scope.data.three.second.id;
-        var fourth = $scope.data.fourth.second.id;
-        var fift = $scope.data.fift.second.id;
+        if ($scope.fullLength > 2) {
+            var third = $scope.data.three.second.id;
+        }
+        if ($scope.fullLength > 2) {
+            var fourth = $scope.data.fourth.second.id;
+        }
+        if ($scope.fullLength > 2) {
+            var fift = $scope.data.fift.second.id;
+        }
         var imgs = [first, second, third, fourth, fift];
         imgs = imgs.slice(0, $scope.fullLength);
 
