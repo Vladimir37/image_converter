@@ -236,7 +236,9 @@ app.controller('result_many', function($scope, $http) {
                 $scope.data = {
                     one: JSON.parse(response.body.one),
                     two: JSON.parse(response.body.two),
-                    three: JSON.parse(response.body.three)
+                    three: JSON.parse(response.body.three),
+                    fourth: JSON.parse(response.body.fourth),
+                    fift: JSON.parse(response.body.fift)
                 };
                 renderPhotoData();
                 clearInterval($scope.checking);
