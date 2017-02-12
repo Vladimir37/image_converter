@@ -257,7 +257,7 @@ app.controller('result_many', function($scope, $http) {
         var imgs_res = [];
 
         imgs.forEach(function (id) {
-                imgs_res.push($http({
+            imgs_res.push($http({
                 method: 'GET',
                 url: '/api/photo_data',
                 params: {num: id}
