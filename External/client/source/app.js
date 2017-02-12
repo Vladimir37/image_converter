@@ -234,13 +234,29 @@ app.controller('result_many', function($scope, $http) {
             console.log(response.body);
             if (response.status == 0) {
                 $scope.processing = false;
+                $scope.fullLength = 2;
                 $scope.data = {
                     one: JSON.parse(response.body.one),
                     two: JSON.parse(response.body.two),
-                    three: JSON.parse(response.body.three),
-                    fourth: JSON.parse(response.body.fourth),
-                    fift: JSON.parse(response.body.fift)
                 };
+                // three: JSON.parse(response.body.three),
+                // fourth: JSON.parse(response.body.fourth),
+                // fift: JSON.parse(response.body.fift)
+                if (response.body.three) {
+                    $scope.data.three = JSON.parse(response.body.three);
+                    $('.main_block_three').removeClass('hidden');
+                    $scope.fullLength++;
+                }
+                if (response.body.fourth) {
+                    $scope.data.fourth = JSON.parse(response.body.fourth);
+                    $('.main_block_fourth').removeClass('hidden');
+                    $scope.fullLength++;
+                }
+                if (response.body.fift) {
+                    $scope.data.fift = JSON.parse(response.body.fift);
+                    $('.main_block_fift').removeClass('hidden');
+                    $scope.fullLength++;
+                }
                 renderPhotoData();
                 clearInterval($scope.checking);
                 rendering();
@@ -258,6 +274,7 @@ app.controller('result_many', function($scope, $http) {
         var fourth = $scope.data.fourth.second.id;
         var fift = $scope.data.fift.second.id;
         var imgs = [first, second, third, fourth, fift];
+        imgs = imgs.slice(0, $scope.fullLength);
 
         var imgs_res = [];
 
@@ -273,15 +290,21 @@ app.controller('result_many', function($scope, $http) {
             console.log(data);
             $('#first-card').html(_generateData(data[0], 'one'));
             $('#second-card').html(_generateData(data[1], 'two'));
-            $('#third-card').html(_generateData(data[2], 'three'));
-            $('#fourth-card').html(_generateData(data[3], 'fourth'));
-            $('#fift-card').html(_generateData(data[4], 'fift'));
+            if ($scope.fullLength > 2) {
+                $('#third-card').html(_generateData(data[2], 'three'));
+            }
+            if ($scope.fullLength > 3) {
+                $('#fourth-card').html(_generateData(data[3], 'fourth'));
+            }
+            if ($scope.fullLength > 4) {
+                $('#fift-card').html(_generateData(data[4], 'fift'));
+            }
 
             var D = calculateD($scope.data.one.number, $scope.data.two.number, $scope.data.three.number);
 
             color('first', $scope.data.one.number, D);
-            color('second', $scope.data.two.number, D);
-            color('third', $scope.data.three.number, D);
+            // color('second', $scope.data.two.number, D);
+            // color('third', $scope.data.three.number, D);
         });
 
         function _generateData (raw_data, num) {
