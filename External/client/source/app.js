@@ -294,7 +294,6 @@ app.controller('result_many', function($scope, $http) {
         });
 
         Promise.all(imgs_res).then(function (data) {
-            console.log(data);
             $('#first-card').html(_generateData(data[0], 'one'));
             $('#second-card').html(_generateData(data[1], 'two'));
             if ($scope.fullLength > 2) {
@@ -407,6 +406,7 @@ app.controller('result_many', function($scope, $http) {
         $scope.loading_img = true;
         $scope.minImages = $scope.allImages.slice($scope.fullLength);
         $scope.minImages.slice(0, 8);
+        console.log($scope.minImages);
         $scope.minImages.forEach(function(imgNum) {
             $http({
                 method: 'GET',
