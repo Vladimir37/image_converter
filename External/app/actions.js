@@ -165,9 +165,10 @@ function _update_row(num, type, data) {
             completed: true,
             one: JSON.stringify(data.one),
             two: JSON.stringify(data.two),
-            three: JSON.stringify(data.three),//
+            three: JSON.stringify(data.three),
             fourth: JSON.stringify(data.fourth),
-            fift: JSON.stringify(data.fift)
+            fift: JSON.stringify(data.fift),
+            allImages: JSON.stringify(data.allImages)
         }, {
             where: {
                 id: num
