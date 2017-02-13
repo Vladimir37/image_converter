@@ -261,6 +261,7 @@ app.controller('result_many', function($scope, $http) {
                 clearInterval($scope.checking);
                 rendering();
                 minPicsLoad();
+                console.log('render');
             }
             else if (response.status == 2) {
                 $scope.error = 'Server error';
