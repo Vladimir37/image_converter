@@ -414,7 +414,7 @@ app.controller('result_many', function($scope, $http) {
         $scope.loading_img = true;
         $scope.minImages = $scope.allImages.slice($scope.fullLength);
         $scope.minImages.slice(0, 15);
-        var imgNum = 6;
+        var currentImgNum = 6;
         $scope.minImages.forEach(function(imgNum) {
             $http({
                 method: 'GET',
@@ -427,10 +427,10 @@ app.controller('result_many', function($scope, $http) {
                 }
                 else {
                     var minImg = '<div class="min-img"><img src="data:image/jpg;base64,' + response.body.file + '" class="top-hit-img"/></min-img>';
-                    var minNum = '<div class="min-num">' + imgNum + '</div>'
+                    var minNum = '<div class="min-num">' + currentImgNum + '</div>'
                     $(minImg).appendTo('#min-pic-block');
                     $(minNum).appendTo('#min-pic-nums');
-                    imgNum++;
+                    currentImgNum++;
                 }
             }).catch(function (err) {
                 console.log(err);
