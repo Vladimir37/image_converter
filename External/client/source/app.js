@@ -258,7 +258,11 @@ app.controller('result_many', function($scope, $http) {
                     $('.main_block_fift').removeClass('hidden');
                     $scope.fullLength++;
                 }
-                console.log(response.body);
+                // console.log(response.body);
+                console.log(response.body.fourth);
+                console.log(response.body.fift);
+                console.log($scope.fullLength);
+                
                 renderPhotoData();
                 rendering();
                 minPicsLoad();
