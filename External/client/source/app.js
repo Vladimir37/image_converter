@@ -231,11 +231,10 @@ app.controller('result_many', function($scope, $http) {
             params: {num: $scope.number}
         }).then(function (response) {
             response = response.data;
-            console.log(response.body);
             if (response.status == 0) {
                 $scope.processing = false;
                 $scope.fullLength = 2;
-                console.log(response.body.allImages);
+                $scope.allImages = JSON.parse(response.body.allImages);
                 $scope.data = {
                     one: JSON.parse(response.body.one),
                     two: JSON.parse(response.body.two),
@@ -261,6 +260,7 @@ app.controller('result_many', function($scope, $http) {
                 renderPhotoData();
                 clearInterval($scope.checking);
                 rendering();
+                minPicsLoad();
             }
             else if (response.status == 2) {
                 $scope.error = 'Server error';
@@ -405,37 +405,29 @@ app.controller('result_many', function($scope, $http) {
 
     function minPicsLoad() {
         $scope.loading_img = true;
-        $http({
-            method: 'GET',
-            url: '/api/images'
-        }).then(function (response) {
-            response = response.data;
-            if (response.status > 0) {
-                console.log(response);
-                $scope.error = 'Server error';
-            }
-            else {
-                var images = response.body;
-                if (images.length > 8) {
-                    images = images.slice(0, 8);
+        $scope.minImages = $scope.allImages.slice($scope.fullLength);
+        $scope.minImages.slice(0, 8);
+        $scope.minImages.forEach(function(imgNum) {
+            $http({
+                method: 'GET',
+                url: '/api/photo_data',
+                data: {
+                    num: imgNum
                 }
-                if (images.length < 8) {
-                    var additional = 8 - images.length;
-                    for (var i = 0; i < Math.floor(additional) / 2; i++) {
-                        images.unshift({});
-                        images.push({});
-                    }
-                    if (additional % 2 != 0) {
-                        images.push({});
-                    }
+            }).then(function (response) {
+                response = response.data;
+                if (response.status > 0) {
+                    console.log(response);
+                    $scope.error = 'Server error';
                 }
-                $scope.images = images;
-                $scope.loading_img = false;
-            }
-        }).catch(function (err) {
-            console.log(err);
-            $scope.error = 'Server error!';
+                else {
+                    var minImg = '<md-grid-tile md-colspan="1"><img src="data:image/jpg;base64,' + response.body + '" class="top-hit-img"/></md-grid-tile>';
+                    $(minImg).appendTo('#min-pic-block');
+                }
+            }).catch(function (err) {
+                console.log(err);
+                $scope.error = 'Server error!';
+            });
         });
     }
-    minPicsLoad();
 });
