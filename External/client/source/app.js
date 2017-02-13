@@ -426,5 +426,6 @@ app.controller('result_many', function($scope, $http) {
                 $scope.error = 'Server error!';
             });
         });
+        $scope.loading_img = false;
     }
 });
