@@ -418,7 +418,7 @@ app.controller('result_many', function($scope, $http) {
                     $scope.error = 'Server error';
                 }
                 else {
-                    var minImg = '<md-grid-tile md-colspan="1"><img src="data:image/jpg;base64,' + response.body + '" class="top-hit-img"/></md-grid-tile>';
+                    var minImg = '<md-grid-tile md-colspan="1"><img src="data:image/jpg;base64,' + response.body.file + '" class="top-hit-img"/></md-grid-tile>';
                     $(minImg).appendTo('#min-pic-block');
                 }
             }).catch(function (err) {
