@@ -235,6 +235,7 @@ app.controller('result_many', function($scope, $http) {
             if (response.status == 0) {
                 $scope.processing = false;
                 $scope.fullLength = 2;
+                console.log(response.body.allImages);
                 $scope.data = {
                     one: JSON.parse(response.body.one),
                     two: JSON.parse(response.body.two),

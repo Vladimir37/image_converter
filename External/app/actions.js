@@ -99,15 +99,17 @@ function all_pics(req, res, next) {
         result.sort(function(a, b) {
             return b.number - a.number;
         });
+        var allImageId = [];
         result.forEach(function(item) {
-            console.log(item.number);
+            allImageId.push(item.second.id);
         });
         var first_results = {
             one: result[0],
             two: result[1],
             three: result[2],
             fourth: result[3],
-            fift: result[4]
+            fift: result[4],
+            allImages: allImageId
         };
         _update_row(numRow, 'all', first_results);
     }).catch(function(err) {

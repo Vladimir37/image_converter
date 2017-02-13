@@ -62,7 +62,8 @@ tables.comparison = sequelize.define('comparison', {
     twoId: Sequelize.INTEGER,
     threeId: Sequelize.INTEGER,
     fourthId: Sequelize.INTEGER,
-    fiftId: Sequelize.INTEGER
+    fiftId: Sequelize.INTEGER,
+    allImages: Sequelize.TEXT()
 });
 
 for(var table in tables) {
