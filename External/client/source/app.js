@@ -262,7 +262,7 @@ app.controller('result_many', function($scope, $http) {
                 console.log(response.body.fourth);
                 console.log(response.body.fift);
                 console.log($scope.fullLength);
-                
+
                 renderPhotoData();
                 rendering();
                 minPicsLoad();
@@ -361,7 +361,7 @@ app.controller('result_many', function($scope, $http) {
 
     function rendering() {
         var canvas_count = $('.result_canvas').length;
-        var numbers = ['one', 'two', 'three'];
+        var numbers = ['one', 'two', 'three', 'fourth', 'fift'];
 
         for(var canv_num = 0; canv_num < canvas_count; canv_num++) {
             var canvas_first = document.getElementsByClassName("first_canv")[canv_num];
@@ -369,10 +369,10 @@ app.controller('result_many', function($scope, $http) {
             var canvas_second = document.getElementsByClassName("second_canv")[canv_num];
             var context_second = canvas_second.getContext("2d");
 
-            if (!$scope.data[numbers[canv_num]]) {
-                $(canvas_first).closest('.result_canvas').hide();
-                break;
-            }
+            // if (!$scope.data[numbers[canv_num]]) {
+            //     $(canvas_first).closest('.result_canvas').hide();
+            //     break;
+            // }
 
             var sausage_first = $scope.data[numbers[canv_num]].second.data;
             var width_first = canvas_first.width;
