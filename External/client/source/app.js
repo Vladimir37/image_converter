@@ -222,7 +222,7 @@ app.controller('result_many', function($scope, $http) {
     $scope.processing = true;
     $scope.data = null;
 
-    $scope.checking = setInterval(checkLoading, 2000);
+    // $scope.checking = setInterval(checkLoading, 2000);
 
     function checkLoading() {
         $http({
@@ -258,13 +258,14 @@ app.controller('result_many', function($scope, $http) {
                     $scope.fullLength++;
                 }
                 renderPhotoData();
-                clearInterval($scope.checking);
                 rendering();
                 minPicsLoad();
-                console.log('render');
             }
             else if (response.status == 2) {
                 $scope.error = 'Server error';
+            }
+            else {
+                setInterval(checkLoading, 2000);
             }
         })
     }
@@ -407,7 +408,6 @@ app.controller('result_many', function($scope, $http) {
         $scope.loading_img = true;
         $scope.minImages = $scope.allImages.slice($scope.fullLength);
         $scope.minImages.slice(0, 8);
-        console.log($scope.minImages);
         $scope.minImages.forEach(function(imgNum) {
             $http({
                 method: 'GET',
