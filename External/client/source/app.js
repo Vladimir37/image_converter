@@ -410,10 +410,7 @@ app.controller('result_many', function($scope, $http) {
         $scope.minImages.forEach(function(imgNum) {
             $http({
                 method: 'GET',
-                url: '/api/photo_data',
-                data: {
-                    num: imgNum
-                }
+                url: '/api/photo_data?num=' + imgNum,
             }).then(function (response) {
                 response = response.data;
                 if (response.status > 0) {
