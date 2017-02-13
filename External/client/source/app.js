@@ -223,7 +223,7 @@ app.controller('result_many', function($scope, $http) {
     $scope.data = null;
 
     // $scope.checking = setInterval(checkLoading, 2000);
-    setInterval(checkLoading, 2000);
+    setTimeout(checkLoading, 2000);
 
     function checkLoading() {
         $http({
@@ -266,7 +266,7 @@ app.controller('result_many', function($scope, $http) {
                 $scope.error = 'Server error';
             }
             else {
-                setInterval(checkLoading, 2000);
+                setTimeout(checkLoading, 2000);
             }
         })
     }
