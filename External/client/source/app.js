@@ -203,10 +203,11 @@ app.controller('result', function($scope, $http) {
     }
 
     function renderPhotoData() {
+        console.log($scope.data.second.id);
         $http({
             method: 'GET',
-            url: '/api/photo_data',
-            params: {num: $scope.data.second.id}
+            url: '/api/photo_data?=' + $scope.data.second.id,
+            // params: {num: $scope.data.second.id}
         }).then(function(data) {
             $('#first-card').html(_generateData(data));
         })
