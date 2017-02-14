@@ -206,9 +206,9 @@ app.controller('result', function($scope, $http) {
         $http({
             method: 'GET',
             url: '/api/photo_data',
-            params: {num: $scope.data.one.second.id}
+            params: {num: $scope.data.second.id}
         }).then(function(data) {
-            $('#first-card').html(_generateData(data, 'one'));
+            $('#first-card').html(_generateData(data));
         })
     }
 
@@ -224,7 +224,7 @@ app.controller('result', function($scope, $http) {
         "<p><b>Gender: </b>" + gender + "</p><br>" +
         "<p><b>Nationality: </b>" + data.nationality + "</p><br>" +
         "<p><b>D. O. B.: </b>" + data.dob.toString().slice(0, -14) + "</p><br>" +
-        "<p><b>Score: </b>" + $scope.data[num].number + "</p><br>";
+        "<p><b>Score: </b>" + $scope.data.number + "</p><br>";
     }
 
     function color () {
@@ -284,10 +284,6 @@ app.controller('result_many', function($scope, $http) {
                     $('.main_block_fift').removeClass('hidden');
                     $scope.fullLength++;
                 }
-                // console.log(response.body);
-                console.log(response.body.fourth);
-                console.log(response.body.fift);
-                console.log($scope.fullLength);
 
                 renderPhotoData();
                 rendering();
@@ -303,7 +299,6 @@ app.controller('result_many', function($scope, $http) {
     }
 
     function renderPhotoData() {
-        console.log($scope.data);
         var first = $scope.data.one.second.id;
         var second = $scope.data.two.second.id;
         if ($scope.fullLength > 2) {
