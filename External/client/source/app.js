@@ -333,7 +333,7 @@ app.controller('result_many', function($scope, $http) {
             "<p><b>Gender: </b>" + gender + "</p><br>" +
             "<p><b>Nationality: </b>" + data.nationality + "</p><br>" +
             "<p><b>D. O. B.: </b>" + data.dob.toString().slice(0, -14) + "</p><br>" +
-            "<p><b>Count: </b>" + $scope.data[num].number + "</p><br>";
+            "<p><b>Score: </b>" + $scope.data[num].number + "</p><br>";
         }
 
         function color (target, count, D) {
