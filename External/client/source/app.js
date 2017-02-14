@@ -303,6 +303,7 @@ app.controller('result_many', function($scope, $http) {
     }
 
     function renderPhotoData() {
+        console.log($scope.data);
         var first = $scope.data.one.second.id;
         var second = $scope.data.two.second.id;
         if ($scope.fullLength > 2) {
