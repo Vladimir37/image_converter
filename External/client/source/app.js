@@ -203,17 +203,10 @@ app.controller('result', function($scope, $http) {
     }
 
     function renderPhotoData() {
-        $('#first-card').html(_generateData(data));
+        $('#first-card').html(_generateData());
     }
 
-    function _generateData (raw_data, num) {
-        data = raw_data.data.body;
-        var gender;
-        if (isNaN(data.gender)) {
-            gender = data.gender;
-        } else {
-            gender = data.gender == 0 ? "Male" : "Female";
-        }
+    function _generateData () {
         return "<p><b>Score: </b>" + $scope.data.number + "</p><br>";
     }
 
