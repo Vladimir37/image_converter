@@ -151,6 +151,7 @@ app.controller('result', function($scope, $http) {
                 $scope.data = JSON.parse(response.body.one);
                 clearInterval($scope.checking);
                 rendering();
+                renderPhotoData();
             }
             else if (response.status == 2) {
                 $scope.error = 'Server error';
@@ -199,6 +200,31 @@ app.controller('result', function($scope, $http) {
         }
 
         color();
+    }
+
+    function renderPhotoData() {
+        $http({
+            method: 'GET',
+            url: '/api/photo_data',
+            params: {num: $scope.data.one.second.id}
+        }).then(function(data) {
+            $('#first-card').html(_generateData(data, 'one'));
+        })
+    }
+
+    function _generateData (raw_data, num) {
+        data = raw_data.data.body;
+        var gender;
+        if (isNaN(data.gender)) {
+            gender = data.gender;
+        } else {
+            gender = data.gender == 0 ? "Male" : "Female";
+        }
+        return "<p><b>Name: </b>" + data.name + "</p><br>" +
+        "<p><b>Gender: </b>" + gender + "</p><br>" +
+        "<p><b>Nationality: </b>" + data.nationality + "</p><br>" +
+        "<p><b>D. O. B.: </b>" + data.dob.toString().slice(0, -14) + "</p><br>" +
+        "<p><b>Score: </b>" + $scope.data[num].number + "</p><br>";
     }
 
     function color () {
