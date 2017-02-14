@@ -203,13 +203,7 @@ app.controller('result', function($scope, $http) {
     }
 
     function renderPhotoData() {
-        $http({
-            method: 'GET',
-            url: '/api/photo_data?=' + $scope.data.id,
-            // params: {num: $scope.data.second.id}
-        }).then(function(data) {
-            $('#first-card').html(_generateData(data));
-        })
+        $('#first-card').html(_generateData(data));
     }
 
     function _generateData (raw_data, num) {
@@ -220,11 +214,7 @@ app.controller('result', function($scope, $http) {
         } else {
             gender = data.gender == 0 ? "Male" : "Female";
         }
-        return "<p><b>Name: </b>" + data.name + "</p><br>" +
-        "<p><b>Gender: </b>" + gender + "</p><br>" +
-        "<p><b>Nationality: </b>" + data.nationality + "</p><br>" +
-        "<p><b>D. O. B.: </b>" + data.dob.toString().slice(0, -14) + "</p><br>" +
-        "<p><b>Score: </b>" + $scope.data.number + "</p><br>";
+        return "<p><b>Score: </b>" + $scope.data.number + "</p><br>";
     }
 
     function color () {
