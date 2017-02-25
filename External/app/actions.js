@@ -131,7 +131,7 @@ function upload(req, res, next) {
 function restart_all(req, res, next) {
     res.redirect('/');
     models.comparison.destroy({where: {}});
-    // exec('forever restartall');
+    exec('forever restartall');
 }
 
 function _create_row(res) {
