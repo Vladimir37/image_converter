@@ -181,3 +181,21 @@ h3.main-logo {
     margin-bottom: 10px;
     font-size: 18px;
 }
+
+.processes_list {
+    margin-top: 20px;
+}
+
+.processes_list_top_tr {
+    margin-bottom: 20px;
+}
+
+.processes_list tr {
+    border-bottom: 1px solid black;
+}
+
+.processes_list td {
+    margin-right: 10px;
+    padding: 0 10px;
+    text-align: center;
+}

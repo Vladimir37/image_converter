@@ -1,0 +1,41 @@
+extends _layout_
+
+block content
+    article.logo_panel
+        md-grid-list(md-cols="5" md-row-height="60px")
+            md-grid-tile(md-colspan="2")
+            md-grid-tile(md-colspan="1")
+                img(alt="logo" src="/src/img/logo.png").logo_img
+            md-grid-tile(md-colspan="2")
+    article.top_panel
+        md-grid-list(md-cols="6" md-row-height="50px")
+            md-grid-tile(md-colspan="1")
+                a(href='/')
+                    md-button(class="md-raised md-primary md-but-menu") Index
+            md-grid-tile(md-colspan="1")
+                a(href='/gallery')
+                    md-button(class="md-raised md-primary md-but-menu") Gallery
+            md-grid-tile(md-colspan="2")
+                h3.main-logo Client logo
+            md-grid-tile(md-colspan="1")
+                - if(user_status)
+                    a(href='/manage')
+                        md-button(class="md-raised md-primary md-but-menu") Manage
+            md-grid-tile(md-colspan="1")
+                a(href='/exit')
+                    md-button(class="md-raised md-primary md-but-menu") Logout
+
+    article.main(ng-controller="processes")
+        table.processes_list
+            tr.processes_list_top_tr
+                th Num
+                th Start date
+                th Completed
+            - each process, i in processes
+                tr
+                    - var status = process.completed ? 'Yes' : 'No'
+                    td=i
+                    td=process.createdAt
+                    td=status
+        form(method="POST" action="/processes")#reset_form
+            md-button(class="md-raised md-primary")#reset_but Restart all

@@ -19,6 +19,16 @@ function manage_front(req, res, next) {
     });
 }
 
+function processes_front(req, res, next) {
+    models.comparison.findAll().then(function(processes) {
+        processes.reverse();
+        res.render('processes.jade', {processes: processes});
+    }, function(err) {
+        console.log(err);
+        res.end('Server error');
+    });
+}
+
 function image_render(req, res, next) {
     var image_num = req.params.num;
     models.images.findOne({
@@ -52,5 +62,6 @@ function gallery(req, res, next) {
 
 exports.index = index;
 exports.manage_front = manage_front;
+exports.processes_front = processes_front;
 exports.image = image_render;
 exports.gallery = gallery;

@@ -445,3 +445,8 @@ app.controller('result_many', function($scope, $http) {
         $scope.loading_img = false;
     }
 });
+app.controller('processes', function($scope, $http) {
+    $('#reset_but').click(function() {
+        $('#reset_form').submit();
+    })
+});

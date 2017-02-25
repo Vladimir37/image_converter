@@ -26,9 +26,11 @@ app.get('/gallery', auth.check, render.gallery);
 app.get('/image/:num', auth.check, render.image);
 
 app.get('/manage', auth.check, auth.check_status, render.manage_front);
+app.get('/processes', auth.check, auth.check_status, render.processes_front);
 app.get('/exit', auth.exit);
 
 app.post('/manage', auth.check, auth.check_status, actions.manage_back);
+app.post('/processes', auth.check, auth.check_status, actions.restart_all);
 app.post('/login', auth.auth);
 
 app.post('/two_pics', auth.check, actions.two_pics);

@@ -1,4 +1,5 @@
 var fs = require('fs');
+var exec = require('child_process').exec;
 
 //var compare = require('./processing');
 var compare = require('./send');
@@ -127,6 +128,12 @@ function upload(req, res, next) {
     });
 };
 
+function restart_all(req, res, next) {
+    res.redirect('/');
+    models.comparison.destroy({where: {}});
+    // exec('forever restartall');
+}
+
 function _create_row(res) {
     return new Promise(function (resolve, reject) {
         models.comparison.create({
@@ -186,3 +193,4 @@ exports.two_pics = two_pics;
 exports.all_pics = all_pics;
 exports.upload = upload;
 exports.manage_back = manage_back;
+exports.restart_all = restart_all;
